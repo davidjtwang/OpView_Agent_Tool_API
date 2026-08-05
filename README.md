@@ -8,5 +8,5 @@ OpView Agent Tool API MCP 測試 by Codex
 * [台灣主要冷氣品牌社群聲量報告](https://davidjtwang.github.io/OpView_Agent_Tool_API/taiwan-aircon-social-report.html) 額度限制（用完）資料不足
 * [加熱菸社群討論觀測](https://davidjtwang.github.io/OpView_Agent_Tool_API/heated-tobacco-social-report-2026-04-to-date.html) 時間區間受限資料量過少
 
-OpView 站台測試 by Codex
+OpView 站台測試 by Codex（Codex 開啟瀏覽器進入站台操作）
 * [Ploom 近一年聲量觀察](https://davidjtwang.github.io/OpView_Agent_Tool_API/ploom-yearly-opview-report.html)
