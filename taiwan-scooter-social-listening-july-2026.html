@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>台灣主要機車品牌｜社群聲量互動報告｜2026 年 7 月</title>
+  <style>
+    :root{
+      --ink:#132238;--muted:#637083;--paper:#f6f4ef;--card:#fffdf8;--line:#d9d5cc;
+      --navy:#263b80;--mint:#20a486;--orange:#ee7b45;--violet:#8a63d2;--rose:#cc5c7d;
+      --positive:#249a77;--neutral:#b9b7ae;--negative:#d55d62;
+      --facebook:#2c6bed;--youtube:#e45656;--threads:#222a36;--instagram:#a35fba;--forum:#d29632;--other:#a8afb9;
+      --shadow:0 14px 35px rgba(19,34,56,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.55}
+    button,select,a{font:inherit}
+    a{color:var(--navy)}
+    a:hover{text-decoration-thickness:2px}
+    .shell{width:min(1180px,calc(100% - 32px));margin:auto}
+    .hero{position:relative;overflow:hidden;padding:60px 0 46px;background:
+      radial-gradient(circle at 78% 20%,rgba(138,99,210,.18),transparent 29%),
+      radial-gradient(circle at 18% 5%,rgba(32,164,134,.16),transparent 27%),
+      linear-gradient(125deg,#fffdf8,#f4f1e8)}
+    .hero:after{content:"";position:absolute;right:-80px;bottom:-150px;width:390px;height:390px;border:52px solid rgba(38,59,128,.07);border-radius:50%}
+    .eyebrow{display:flex;gap:10px;align-items:center;color:var(--navy);font-size:.84rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:30px;height:3px;background:var(--orange)}
+    h1{font-size:clamp(2.15rem,5vw,4.55rem);line-height:1.04;letter-spacing:-.055em;max-width:900px;margin:18px 0 20px}
+    .hero p{max-width:810px;margin:0;color:#46546a;font-size:clamp(1rem,2vw,1.18rem)}
+    .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+    .pill{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border:1px solid #cbc7bd;background:rgba(255,255,255,.65);border-radius:999px;color:#405069;font-size:.84rem}
+    .pill.warning{border-color:#e8bc9d;background:#fff2e8;color:#7b482c}
+    nav{position:sticky;top:0;z-index:20;background:rgba(246,244,239,.91);backdrop-filter:blur(14px);border-block:1px solid rgba(19,34,56,.09)}
+    nav .shell{display:flex;gap:23px;overflow-x:auto;padding-block:11px;scrollbar-width:none}
+    nav a{white-space:nowrap;text-decoration:none;color:#47566b;font-size:.88rem;font-weight:700}
+    nav a:hover{color:var(--navy)}
+    main{padding:32px 0 60px}
+    section{scroll-margin-top:62px;margin:0 0 50px}
+    .section-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;margin-bottom:18px}
+    .section-kicker{margin:0 0 4px;color:var(--orange);font-weight:800;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+    h2{font-size:clamp(1.55rem,3vw,2.15rem);line-height:1.15;margin:0;letter-spacing:-.025em}
+    h3{margin:0 0 8px;font-size:1.05rem}
+    .section-sub{margin:7px 0 0;color:var(--muted);max-width:780px}
+    .controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+    .control-label{font-size:.8rem;color:var(--muted);font-weight:700}
+    .segmented{display:flex;border:1px solid #cfcac0;border-radius:10px;padding:3px;background:#ebe8e0}
+    .segmented button,.legend-button,.brand-tab{border:0;background:transparent;color:#526075;cursor:pointer;border-radius:7px;padding:7px 10px;font-weight:750;font-size:.82rem}
+    .segmented button[aria-pressed="true"],.brand-tab[aria-pressed="true"]{background:var(--ink);color:#fff}
+    button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid rgba(38,59,128,.35);outline-offset:2px}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .card{background:var(--card);border:1px solid rgba(19,34,56,.10);border-radius:16px;box-shadow:var(--shadow)}
+    .kpi{padding:20px;min-height:142px;display:flex;flex-direction:column;justify-content:space-between}
+    .kpi-label{color:var(--muted);font-size:.82rem;font-weight:750}
+    .kpi-value{font-size:clamp(1.75rem,4vw,2.65rem);font-weight:850;letter-spacing:-.045em;line-height:1}
+    .kpi-note{font-size:.78rem;color:#59667a}
+    .accent-line{height:5px;border-radius:4px;margin:-1px -1px 16px;background:var(--navy)}
+    .accent-line.mint{background:var(--mint)}.accent-line.orange{background:var(--orange)}.accent-line.rose{background:var(--rose)}
+    .chart-card{padding:18px 18px 12px}
+    .chart-wrap{position:relative;min-height:420px}
+    .chart-wrap svg{display:block;width:100%;height:auto;overflow:visible}
+    .chart-title-row{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:9px}
+    .legend{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 3px}
+    .legend-button{display:flex;align-items:center;gap:7px;border:1px solid #d4d0c7;background:#fff}
+    .legend-button[aria-pressed="false"]{opacity:.42;text-decoration:line-through}
+    .swatch{width:10px;height:10px;border-radius:3px;flex:none}
+    .chart-note{font-size:.76rem;color:var(--muted);margin:7px 0 0}
+    .rank-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
+    .ranking{padding:20px}
+    .rank-row{display:grid;grid-template-columns:120px 1fr 95px;gap:13px;align-items:center;margin:15px 0}
+    .rank-label{font-weight:800;font-size:.9rem}
+    .bar-track{height:13px;background:#e8e4db;border-radius:999px;overflow:hidden}
+    .bar-fill{height:100%;border-radius:inherit;transition:width .45s ease}
+    .rank-value{text-align:right;font-variant-numeric:tabular-nums;font-size:.82rem}
+    .definition{padding:22px;background:var(--ink);color:#f9f8f3;border-radius:16px}
+    .definition .big{font-size:2.7rem;font-weight:850;line-height:1;margin:8px 0 11px}
+    .definition p{color:#dbe1ec;margin:0;font-size:.88rem}
+    .stack-panel{padding:20px}
+    .stack-legend{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:18px;font-size:.78rem;color:#59667a}
+    .stack-legend span{display:flex;align-items:center;gap:6px}
+    .stack-row{display:grid;grid-template-columns:118px 1fr 70px;gap:13px;align-items:center;margin:13px 0}
+    .stack-label{font-weight:800;font-size:.88rem}
+    .stackbar{display:flex;width:100%;height:25px;overflow:hidden;border-radius:7px;background:#e8e4db}
+    .stack-segment{height:100%;border:0;padding:0;min-width:1px;cursor:help;position:relative;transition:filter .18s,opacity .18s}
+    .stack-segment:hover,.stack-segment:focus-visible{filter:brightness(.88);z-index:2}
+    .stack-total{text-align:right;font-size:.78rem;color:var(--muted)}
+    .source-callout{margin-top:18px;padding:13px 15px;border-left:4px solid var(--orange);background:#f4efe4;font-size:.84rem;color:#49566a}
+    .sentiment-layout{display:grid;grid-template-columns:1fr 290px;gap:18px}
+    .ratio-board{padding:20px;display:flex;flex-direction:column;gap:12px}
+    .ratio-item{display:flex;justify-content:space-between;gap:12px;padding-bottom:11px;border-bottom:1px solid #e3dfd6}
+    .ratio-item:last-child{border-bottom:0}
+    .ratio-item strong{font-variant-numeric:tabular-nums}
+    .ratio-item .good{color:#16765d}.ratio-item .watch{color:#b2464e}
+    .cloud-card{padding:20px}
+    .brand-tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+    .brand-tab{border:1px solid #d3cec4;background:#fff}
+    .wordcloud{min-height:290px;display:flex;flex-wrap:wrap;justify-content:center;align-content:center;align-items:center;gap:9px 15px;padding:24px;border-radius:13px;background:
+      linear-gradient(135deg,rgba(38,59,128,.045),rgba(32,164,134,.055)),
+      repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(19,34,56,.028) 28px)}
+    .word{display:inline-block;color:var(--ink);font-weight:800;cursor:help;white-space:nowrap;transition:transform .18s,color .18s}
+    .word:nth-child(4n+1){color:var(--navy)}.word:nth-child(4n+2){color:#137d69}.word:nth-child(4n+3){color:#a75336}.word:nth-child(4n){color:#7051b0}
+    .word:hover,.word:focus-visible{transform:translateY(-2px) scale(1.05)}
+    .cloud-context{margin-top:12px;color:var(--muted);font-size:.8rem}
+    .event-table{width:100%;border-collapse:collapse;font-size:.86rem}
+    .event-table th{text-align:left;color:var(--muted);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;padding:11px 12px;border-bottom:1px solid #d7d3ca}
+    .event-table td{padding:14px 12px;border-bottom:1px solid #e5e1d9;vertical-align:top}
+    .event-table tr:last-child td{border-bottom:0}
+    .event-date{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:800}
+    .event-brand{white-space:nowrap;font-weight:800}
+    .signal{display:inline-flex;align-items:center;border-radius:999px;padding:3px 8px;font-size:.72rem;font-weight:800;margin-top:6px}
+    .signal.pos{background:#e2f3ed;color:#176d58}.signal.neg{background:#fae4e5;color:#a33e46}.signal.neu{background:#ece9e2;color:#5e6470}
+    .insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .insight{padding:20px;box-shadow:none}
+    .insight .num{font-size:.76rem;color:var(--orange);font-weight:900;letter-spacing:.1em}
+    .insight p{margin:8px 0 0;color:#566478;font-size:.87rem}
+    .recommendations{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .rec{padding:20px;display:grid;grid-template-columns:43px 1fr;gap:14px;align-items:start}
+    .rec-icon{width:43px;height:43px;border-radius:12px;display:grid;place-items:center;background:#e9e5dc;color:var(--navy);font-weight:900}
+    .rec p{margin:6px 0 0;color:#59667a;font-size:.86rem}
+    .method{padding:0;overflow:hidden}
+    details{border-bottom:1px solid #dfdbd2}
+    details:last-child{border-bottom:0}
+    summary{cursor:pointer;padding:16px 19px;font-weight:800}
+    details>div{padding:0 19px 18px;color:#586579;font-size:.84rem}
+    code{background:#ece8df;padding:2px 5px;border-radius:4px;word-break:break-all}
+    .footer{border-top:1px solid #d5d1c8;padding:26px 0 45px;color:#6a7585;font-size:.79rem}
+    #tooltip{position:fixed;z-index:50;pointer-events:none;opacity:0;transform:translate(-50%,calc(-100% - 12px));background:#111c2d;color:#fff;border-radius:9px;padding:9px 11px;font-size:.76rem;line-height:1.45;box-shadow:0 10px 30px rgba(0,0,0,.2);max-width:280px;transition:opacity .1s}
+    #tooltip.show{opacity:1}
+    #tooltip strong{display:block;color:#fff;margin-bottom:2px}
+    #chart-tooltip{position:absolute;display:none;z-index:5;pointer-events:none;background:#111c2d;color:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 10px 30px rgba(0,0,0,.22);font-size:.75rem;min-width:170px}
+    #chart-tooltip .tt-date{font-weight:900;margin-bottom:5px}
+    #chart-tooltip .tt-line{display:flex;justify-content:space-between;gap:18px}
+    #chart-tooltip .dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:900px){
+      .kpis{grid-template-columns:1fr 1fr}.rank-grid,.sentiment-layout{grid-template-columns:1fr}.insight-grid{grid-template-columns:1fr 1fr}.recommendations{grid-template-columns:1fr}
+      .section-head{grid-template-columns:1fr}.section-head .controls{justify-content:flex-start}
+    }
+    @media(max-width:620px){
+      .shell{width:min(100% - 20px,1180px)}.hero{padding:42px 0 36px}.kpis{grid-template-columns:1fr}.kpi{min-height:118px}
+      .chart-card{padding:13px 10px 8px}.chart-wrap{min-height:310px}.rank-grid,.insight-grid{grid-template-columns:1fr}
+      .rank-row{grid-template-columns:92px 1fr 80px;gap:8px}.stack-row{grid-template-columns:92px 1fr;gap:8px}.stack-total{display:none}
+      .wordcloud{padding:15px;gap:8px 10px}.event-table thead{display:none}.event-table,.event-table tbody,.event-table tr,.event-table td{display:block}
+      .event-table tr{padding:13px;border-bottom:1px solid #dedad2}.event-table td{border:0;padding:2px 0}.event-table .event-date{display:inline;margin-right:10px}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+    @media print{nav,.controls,#tooltip,#chart-tooltip{display:none!important}.hero{padding:25px 0}.card{box-shadow:none}section{break-inside:avoid}.shell{width:96%}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <div class="eyebrow">OPView Social Listening</div>
+      <h1>台灣機車品牌<br>社群聲量脈動</h1>
+      <p>比較光陽 KYMCO、三陽 SYM、山葉 YAMAHA、Gogoro 與台鈴 SUZUKI 的討論趨勢、來源結構、情緒與熱門詞，並將異常高峰轉成可執行的行銷線索。</p>
+      <div class="meta-row">
+        <span class="pill">觀測期間：2026/07/01–07/31</span>
+        <span class="pill">69,965 則主文與回覆</span>
+        <span class="pill">社群、影音與論壇</span>
+        <span class="pill warning">7/31 為查詢當下的未完整日</span>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="報告導覽">
+    <div class="shell">
+      <a href="#overview">總覽</a><a href="#trend">聲量趨勢</a><a href="#sources">聲量來源</a>
+      <a href="#sentiment">正負情緒</a><a href="#cloud">文字雲</a><a href="#events">高峰事件</a>
+      <a href="#insights">觀察摘要</a><a href="#recommendations">行銷建議</a><a href="#method">方法說明</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <section id="overview">
+      <div class="section-head">
+        <div><p class="section-kicker">Executive snapshot</p><h2>一眼看懂本月競爭版圖</h2><p class="section-sub">聲量不等於好感；因此將規模、渠道與情緒拆開觀察。</p></div>
+      </div>
+      <div class="kpis">
+        <article class="card kpi"><div><div class="accent-line"></div><div class="kpi-label">五品牌總聲量</div></div><div class="kpi-value">69,965</div><div class="kpi-note">含主文與回覆；同一討論串可包含多則文件</div></article>
+        <article class="card kpi"><div><div class="accent-line mint"></div><div class="kpi-label">聲量領先</div></div><div class="kpi-value">KYMCO</div><div class="kpi-note">30,897 則，占五品牌 44.2%</div></article>
+        <article class="card kpi"><div><div class="accent-line orange"></div><div class="kpi-label">最佳正負比</div></div><div class="kpi-value">2.10×</div><div class="kpi-note">YAMAHA：正面 19.2%，負面 9.1%</div></article>
+        <article class="card kpi"><div><div class="accent-line rose"></div><div class="kpi-label">需優先追蹤</div></div><div class="kpi-value">2 品牌</div><div class="kpi-note">SYM 與 Gogoro 的負面量高於正面量</div></article>
+      </div>
+    </section>
+
+    <section id="trend">
+      <div class="section-head">
+        <div><p class="section-kicker">Daily volume</p><h2>每日聲量趨勢</h2><p class="section-sub">切換「指數化」可排除品牌量體差異，更容易比較各自的異常高峰。移入圖面可查看當日數據。</p></div>
+        <div class="controls" aria-label="趨勢顯示模式">
+          <span class="control-label">顯示</span>
+          <div class="segmented">
+            <button id="mode-absolute" aria-pressed="true" type="button">絕對聲量</button>
+            <button id="mode-index" aria-pressed="false" type="button">指數化</button>
+          </div>
+        </div>
+      </div>
+      <article class="card chart-card">
+        <div id="line-legend" class="legend" aria-label="品牌圖例與顯示切換"></div>
+        <div id="line-chart" class="chart-wrap" role="img" aria-label="2026 年 7 月五大機車品牌每日社群聲量折線圖">
+          <div id="chart-tooltip"></div>
+        </div>
+        <p class="chart-note">註：7/31 僅代表查詢當下累積，不宜與完整日直接比較。</p>
+      </article>
+      <div class="rank-grid" style="margin-top:18px">
+        <article class="card ranking"><h3>聲量占比排行</h3><div id="ranking"></div></article>
+        <aside class="definition">
+          <div class="eyebrow" style="color:#fff">Share of voice</div>
+          <div class="big">44.2%</div>
+          <p>光陽 KYMCO 的量體主要由 Facebook 車主社團支撐。高聲量代表社群基盤強，但也表示客服、口碑與危機訊號會更早在封閉或半封閉社群出現。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="section-head">
+        <div><p class="section-kicker">Channel mix</p><h2>聲量從哪裡來</h2><p class="section-sub">各品牌以 100% 堆疊呈現來源結構；移入色塊查看筆數與占比。</p></div>
+      </div>
+      <article class="card stack-panel">
+        <div class="stack-legend" id="source-legend"></div>
+        <div id="source-bars"></div>
+        <div class="source-callout"><strong>渠道差異：</strong>KYMCO 與 YAMAHA 高度依賴 Facebook 車主／交易社群；Gogoro 與 SUZUKI 的 Threads 比重明顯較高；SYM 本月有較強的 YouTube 事件帶動。</div>
+      </article>
+    </section>
+
+    <section id="sentiment">
+      <div class="section-head">
+        <div><p class="section-kicker">Sentiment</p><h2>正面、負面與中立情緒</h2><p class="section-sub">OPView 自動情緒標記；堆疊比例用來比較品牌結構，右側以正面 ÷ 負面作為直觀風險指標。</p></div>
+      </div>
+      <div class="sentiment-layout">
+        <article class="card stack-panel">
+          <div class="stack-legend">
+            <span><i class="swatch" style="background:var(--positive)"></i>正面</span>
+            <span><i class="swatch" style="background:var(--neutral)"></i>中立</span>
+            <span><i class="swatch" style="background:var(--negative)"></i>負面</span>
+          </div>
+          <div id="sentiment-bars"></div>
+        </article>
+        <aside class="card ratio-board" id="ratio-board" aria-label="各品牌正負情緒比"></aside>
+      </div>
+    </section>
+
+    <section id="cloud">
+      <div class="section-head">
+        <div><p class="section-kicker">Conversation themes</p><h2>品牌熱門文字雲</h2><p class="section-sub">字級依 OPView 關鍵詞分數縮放。切換品牌並移入詞彙，可查看分數與涵蓋文件數（DF）。</p></div>
+      </div>
+      <article class="card cloud-card">
+        <div id="brand-tabs" class="brand-tabs" aria-label="文字雲品牌選擇"></div>
+        <div id="wordcloud" class="wordcloud" role="group" aria-label="熱門關鍵詞文字雲"></div>
+        <div id="cloud-context" class="cloud-context"></div>
+      </article>
+    </section>
+
+    <section id="events">
+      <div class="section-head">
+        <div><p class="section-kicker">Peak diagnostics</p><h2>高峰事件與訊號</h2><p class="section-sub">以聲量峰值、熱門主文與隔日情緒共同判讀；「可能帶動」代表合理推論，不代表唯一因果。</p></div>
+      </div>
+      <article class="card" style="overflow:hidden">
+        <table class="event-table">
+          <thead><tr><th>日期</th><th>品牌</th><th>數據訊號</th><th>內容脈絡與判讀</th><th>參考主文</th></tr></thead>
+          <tbody>
+            <tr><td class="event-date">07/06</td><td class="event-brand">SYM</td><td>1,430 則<br><span class="signal neg">P/N 0.54</span></td><td>JET SL / SL+ 158 改款發表與價格、配備討論，另受「駕艙機車」議題共提及帶動；聲量放大但負面同步上升。</td><td><a href="https://www.facebook.com/219012331444765/posts/1484449107055333" target="_blank" rel="noopener">JET SL+ 發表貼文</a></td></tr>
+            <tr><td class="event-date">07/09</td><td class="event-brand">Gogoro</td><td>905 則<br><span class="signal pos">P/N 1.18</span></td><td>品牌社群預告／活動內容與既有電動機車討論疊加；Threads 關鍵字搜尋是重要擴散面。</td><td><a href="https://www.facebook.com/1626301084272796/posts/1420853530072918" target="_blank" rel="noopener">品牌活動預告</a></td></tr>
+            <tr><td class="event-date">07/12</td><td class="event-brand">YAMAHA</td><td>670 則<br><span class="signal pos">正面占優</span></td><td>XSR155 導入消息與重機展內容形成產品期待；整月正負比 2.10，為五品牌最佳。</td><td><a href="https://www.facebook.com/219012331444765/posts/1489725569861020" target="_blank" rel="noopener">XSR155 消息</a></td></tr>
+            <tr><td class="event-date">07/21</td><td class="event-brand">SUZUKI</td><td>261 則<br><span class="signal neg">P/N 0.71</span></td><td>GSX250R-F 發表後，官方 Threads「中發票但只能騎 SUZUKI」互動題引發大量參與；熱度高但意見分化。</td><td><a href="https://www.threads.com/@suzukimotortw/post/DbDHP1vibOM" target="_blank" rel="noopener">官方 Threads 互動題</a></td></tr>
+            <tr><td class="event-date">07/25</td><td class="event-brand">KYMCO</td><td>1,398 則<br><span class="signal neg">P/N 0.55</span></td><td>前一日「對岸新車售價」比較內容後出現本月最明顯的品牌負面波動；建議下鑽價格公平感與規格差異。</td><td><a href="https://www.facebook.com/226152627566117/posts/1070789635300384" target="_blank" rel="noopener">對岸售價比較貼文</a></td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section id="insights">
+      <div class="section-head"><div><p class="section-kicker">What it means</p><h2>觀察摘要</h2></div></div>
+      <div class="insight-grid">
+        <article class="card insight"><div class="num">01｜規模</div><h3>KYMCO 掌握最大社群基盤</h3><p>30,897 則、占 44.2%；其中 Facebook 約 91.8%。優勢來自密集車主社團，但渠道集中也使品牌容易被社團內單一議題快速放大。</p></article>
+        <article class="card insight"><div class="num">02｜好感</div><h3>YAMAHA 的情緒結構最健康</h3><p>正面 19.2%、負面 9.1%，正負比 2.10。熱門詞集中里程、年份、勁戰、售價，顯示新品之外也有成熟的保值與交易討論。</p></article>
+        <article class="card insight"><div class="num">03｜風險</div><h3>Gogoro 與 SYM 需拆解負面成因</h3><p>兩品牌負面量高於正面量。Gogoro 聚焦電池、事故、油車比較；SYM 則受新品發表與廣泛「駕艙機車」議題共提及影響。</p></article>
+        <article class="card insight"><div class="num">04｜平台</div><h3>Threads 是新勢力，不是補充渠道</h3><p>SUZUKI 約 40.0%、Gogoro 約 21.8% 聲量來自 Threads。短問句、話題挑戰與即時回覆，對這兩品牌的擴散特別重要。</p></article>
+        <article class="card insight"><div class="num">05｜內容</div><h3>價格、規格與二手價值是共同決策語言</h3><p>售價、里程、年份、車況、引擎反覆進入各品牌熱門詞。消費者從新品興趣很快轉向持有成本、保值與售後證據。</p></article>
+        <article class="card insight"><div class="num">06｜判讀</div><h3>高峰不能只看「有沒有被談」</h3><p>SYM 07/06 與 KYMCO 07/25 都是高量但情緒偏負；品牌報表應把高峰拆成事件、來源與情緒三層，避免把爭議當成成效。</p></article>
+      </div>
+    </section>
+
+    <section id="recommendations">
+      <div class="section-head"><div><p class="section-kicker">Action plan</p><h2>行銷與社群建議</h2><p class="section-sub">依本月訊號排序，先處理可影響轉換或風險的項目。</p></div></div>
+      <div class="recommendations">
+        <article class="card rec"><div class="rec-icon">01</div><div><h3>KYMCO｜建立車主社團雷達與價格回應模板</h3><p>針對 Facebook 前 10 大車主社團設置每日異常量與負面比門檻；遇到跨市場售價比較時，在 6–12 小時內提供稅制、配備、保固與通路差異的可轉貼圖卡。</p></div></article>
+        <article class="card rec"><div class="rec-icon">02</div><div><h3>SYM｜把新品高峰轉成「疑慮解答」內容序列</h3><p>JET SL+ 的規格與價格能製造聲量，但負面也同步上升。建議依序推出加速／油耗實測、TCS/ABS 情境、安全帽與置物空間驗證，並將共提及的廣泛交通議題另列，不混入產品 KPI。</p></div></article>
+        <article class="card rec"><div class="rec-icon">03</div><div><h3>YAMAHA｜用高好感承接試乘與保值溝通</h3><p>在 XSR155、重機展與勁戰內容後串接預約試乘；另用「三年持有成本／二手保值」內容承接里程、年份、售價等高頻需求，把好感轉成名單。</p></div></article>
+        <article class="card rec"><div class="rec-icon">04</div><div><h3>Gogoro｜Threads 即時回應＋電池透明化</h3><p>以 Threads 做快速說明與車主證言擴散；長內容集中電池健康、資費試算、保養與事故後處理。每週公布可驗證的服務指標，降低「品質／油車比較」反覆發酵。</p></div></article>
+        <article class="card rec"><div class="rec-icon">05</div><div><h3>SUZUKI｜放大精品小眾的互動效率</h3><p>延續 Threads 問句型內容，但加上明確行動：投票後導向試乘、展間活動或車款比較。圍繞 SV-7GX、馬力、改款與白牌安全配備做系列化，避免熱度停在一次性互動。</p></div></article>
+        <article class="card rec"><div class="rec-icon">06</div><div><h3>跨品牌｜建立「聲量 × 情緒 × 來源」週報</h3><p>週報至少同時呈現品牌聲量占比、正負比、平台結構、異常主文與議題詞；另維護跨品牌交易社團排除清單，以一致口徑避免來源名稱造成虛增。</p></div></article>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="section-head"><div><p class="section-kicker">Method & caveats</p><h2>資料口徑與限制</h2></div></div>
+      <article class="card method">
+        <details open><summary>資料來源與期間</summary><div>資料取自 OPView Agent Tools，期間為 2026/07/01 00:00:00 至 2026/07/31 23:59:59；查詢來源包含 Facebook、Instagram、Threads、YouTube、Dcard、BBS／Ptt 與論壇，內容類型為主文與回覆。7/31 為查詢當下的未完整日。</div></details>
+        <details><summary>品牌關鍵字與清理</summary><div>品牌包含 KYMCO、SYM、YAMAHA、Gogoro、SUZUKI。為降低「光陽」同名詞雜訊，KYMCO 採品牌／車系精準式並排除豆漿等詞；所有品牌一致排除跨品牌交易社團 <code>WH_F0165_0955</code>，避免社團名稱本身同時包含多品牌而虛增聲量。</div></details>
+        <details><summary>指標定義</summary><div>聲量為 OPView 回傳的文件數（主文或回覆），不等同不重複人數。正／負／中立為自動情緒分類；正負比＝正面量 ÷ 負面量。文字雲字級依 OPView 關鍵詞 score，DF 為包含該詞的文件數。</div></details>
+        <details><summary>判讀限制</summary><div>部分熱門內容可能在標題或內文同時提及多品牌，因此各品牌資料不可直接相加視為全市場不重複文章數。自動情緒與關鍵詞也可能受反諷、轉貼、來源名稱與上下文影響；重大決策前應回看原文並進行人工議題編碼。</div></details>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="shell">資料：OPView Agent Tools｜分析與互動報告製作日期：2026/07/31｜本報告用於社群趨勢探索，不代表市場銷售量或品牌市占。</div></footer>
+  <div id="tooltip" role="tooltip"></div>
+
+  <script>
+    const reportData = {
+      brands: [
+        {id:"kymco",name:"光陽 KYMCO",short:"KYMCO",color:"#263b80",total:30897,
+          trend:[851,826,967,1039,936,877,870,863,1117,861,737,817,1365,1109,964,1270,1163,1419,1558,1106,1242,1028,1021,1102,1398,741,874,1025,958,721,72],
+          sentiment:{positive:4699,neutral:22578,negative:3620},
+          sources:{Facebook:28358,YouTube:1296,Threads:761,Instagram:214,Forum:242,Other:26},
+          terms:[["RTS R",2728,2091],["光陽",2058,1120],["速克達",1183,829],["#KYMCO",1018,582],["里程",933,600],["年份",927,525],["對岸",820,768],["車友",721,507],["售價",436,381],["原廠",373,223],["新車",367,259],["KYMCO",366,195],["車況",364,298],["車輛出售",356,106],["行車記錄器",337,259],["官方",332,220],["引擎",321,264],["車款",312,208],["重機",290,210],["性能",264,169],["改款",253,176],["車主",253,174],["機油",220,176],["試乘",217,174]],
+          context:"核心話題：RTS R、車友社群、售價／車況與對岸價格比較。"},
+        {id:"gogoro",name:"Gogoro",short:"Gogoro",color:"#20a486",total:16361,
+          trend:[411,388,372,510,729,805,541,778,905,573,397,515,613,680,632,721,507,607,398,413,507,523,599,565,501,385,373,521,445,362,85],
+          sentiment:{positive:2356,neutral:10975,negative:3030},
+          sources:{Facebook:9611,YouTube:2439,Threads:3573,Instagram:342,Forum:325,Other:71},
+          terms:[["Gogoro",4659,2736],["里程",1980,1069],["年份",1406,776],["公里",1218,808],["電池",1068,794],["車子",846,650],["售價",781,525],["機堡",684,436],["車況",676,484],["#Gogoro",669,386],["事故",638,439],["油車",614,466],["車款",566,350],["馬達",530,411],["電動車",507,349],["原廠",470,294],["車主",440,286],["Gogoro S2",430,243],["輪胎",424,303],["鏈條",410,240],["Gogoro Luna",368,206],["電車",358,282]],
+          context:"核心話題：電池、里程、油電比較、事故與車況；產品／服務體驗並重。"},
+        {id:"sym",name:"三陽 SYM",short:"SYM",color:"#ee7b45",total:11373,
+          trend:[301,191,236,362,560,1430,862,517,626,598,577,368,344,425,361,350,332,422,312,263,208,236,282,232,183,82,205,190,166,127,25],
+          sentiment:{positive:1898,neutral:7188,negative:2287},
+          sources:{Facebook:6280,YouTube:3233,Threads:1278,Instagram:0,Forum:518,Other:64},
+          terms:[["上國道",4731,2344],["三陽",3462,1951],["售價",3264,2866],["電動車",2727,2468],["安全帽",2634,2419],["機車族",2626,2350],["駕艙機車",2563,2346],["時速",2486,2358],["PTT",2374,2347],["SYM",1221,775],["里程",1164,768],["摩托車",997,588],["速克達",934,554],["勁戰",873,567],["引擎",828,678],["私心",771,399],["年份",760,524],["車款",745,577],["高階",700,429],["車況",672,474],["中古",590,326],["重機",585,464]],
+          context:"核心話題：JET SL+ 發表之外，亦被「駕艙機車／上國道／安全帽」市場議題大量共提及。"},
+        {id:"yamaha",name:"山葉 YAMAHA",short:"YAMAHA",color:"#8a63d2",total:9185,
+          trend:[553,326,312,310,233,351,287,275,249,343,252,670,336,380,249,280,303,337,256,289,229,189,256,508,235,103,254,204,251,279,86],
+          sentiment:{positive:1762,neutral:6585,negative:838},
+          sources:{Facebook:7123,YouTube:553,Threads:902,Instagram:150,Forum:412,Other:45},
+          terms:[["里程",3463,2161],["年份",3238,1926],["山葉",3061,1674],["勁戰",2934,1510],["售價",2449,1885],["引擎",2217,1582],["YAMAHA",2060,1251],["重機",2034,1438],["車況",1762,1233],["私訊",1416,1142],["#YAMAHA",1280,882],["摩托車",1135,622],["速克達",1022,636],["車款",967,681],["廠牌",958,627],["車種",948,541],["車換車",824,603],["事故",748,550],["保固",735,540],["公里",716,571]],
+          context:"核心話題：勁戰、重機與成熟二手交易語彙；里程、年份、售價與車況占比高。"},
+        {id:"suzuki",name:"台鈴 SUZUKI",short:"SUZUKI",color:"#cc5c7d",total:2149,
+          trend:[26,20,33,45,48,36,26,124,167,64,86,66,102,86,50,54,35,40,41,116,261,135,47,106,31,27,42,151,41,31,12],
+          sentiment:{positive:395,neutral:1452,negative:302},
+          sources:{Facebook:971,YouTube:151,Threads:860,Instagram:36,Forum:120,Other:11},
+          terms:[["SUZUKI",891,582],["重機",520,423],["鈴木",344,178],["台鈴",260,177],["馬力",237,117],["改款",236,130],["SV-7GX",230,132],["#SUZUKI",219,152],["售價",209,155],["年份",195,119],["里程",189,126],["引擎",183,128],["小編",160,84],["品牌",156,98],["踩發",151,127],["經典",138,102],["白牌",120,72],["旅行車",117,84],["發票",114,107],["重型",111,51]],
+          context:"核心話題：重機、SV-7GX、馬力與改款；官方 Threads 互動題有效放大討論。"}
+      ],
+      sourceColors:{Facebook:"#2c6bed",YouTube:"#e45656",Threads:"#222a36",Instagram:"#a35fba",Forum:"#d29632",Other:"#a8afb9"}
+    };
+    const fmt = n => n.toLocaleString("zh-TW");
+    const pct = (n,d) => (n/d*100).toFixed(1)+"%";
+    const tooltip = document.getElementById("tooltip");
+    function bindTips(root=document){
+      root.querySelectorAll("[data-tip]").forEach(el=>{
+        el.addEventListener("pointerenter",showTip);
+        el.addEventListener("pointermove",moveTip);
+        el.addEventListener("pointerleave",hideTip);
+        el.addEventListener("focus",()=>{const r=el.getBoundingClientRect();placeTip(r.left+r.width/2,r.top);tooltip.classList.add("show")});
+        el.addEventListener("blur",hideTip);
+      });
+    }
+    function showTip(e){tooltip.innerHTML=e.currentTarget.dataset.tip;moveTip(e);tooltip.classList.add("show")}
+    function moveTip(e){placeTip(e.clientX,e.clientY)}
+    function placeTip(x,y){tooltip.style.left=Math.max(145,Math.min(innerWidth-145,x))+"px";tooltip.style.top=Math.max(80,y)+"px"}
+    function hideTip(){tooltip.classList.remove("show")}
+
+    const totalAll=reportData.brands.reduce((s,b)=>s+b.total,0);
+    function renderRanking(){
+      document.getElementById("ranking").innerHTML=reportData.brands.map(b=>`
+        <div class="rank-row">
+          <div class="rank-label">${b.short}</div>
+          <div class="bar-track" aria-label="${b.name} 聲量占比 ${pct(b.total,totalAll)}"><div class="bar-fill" style="width:${b.total/Math.max(...reportData.brands.map(x=>x.total))*100}%;background:${b.color}"></div></div>
+          <div class="rank-value"><strong>${pct(b.total,totalAll)}</strong><br>${fmt(b.total)}</div>
+        </div>`).join("");
+    }
+
+    let chartMode="absolute";
+    const enabled=new Set(reportData.brands.map(b=>b.id));
+    function renderLegend(){
+      const box=document.getElementById("line-legend");
+      box.innerHTML=reportData.brands.map(b=>`<button type="button" class="legend-button" data-id="${b.id}" aria-pressed="${enabled.has(b.id)}"><i class="swatch" style="background:${b.color}"></i>${b.short}</button>`).join("");
+      box.querySelectorAll("button").forEach(btn=>btn.addEventListener("click",()=>{
+        const id=btn.dataset.id;
+        if(enabled.has(id)&&enabled.size>1)enabled.delete(id);else enabled.add(id);
+        renderLegend();renderLineChart();
+      }));
+    }
+    function renderLineChart(){
+      const wrap=document.getElementById("line-chart"), tt=document.getElementById("chart-tooltip");
+      wrap.querySelector("svg")?.remove();
+      const W=1000,H=430,M={l:68,r:26,t:22,b:55},plotW=W-M.l-M.r,plotH=H-M.t-M.b;
+      const active=reportData.brands.filter(b=>enabled.has(b.id));
+      const values=active.flatMap(b=>chartMode==="index"?b.trend.map(v=>v/Math.max(...b.trend)*100):b.trend);
+      const rawMax=Math.max(...values), step=chartMode==="index"?25:Math.ceil(rawMax/4/100)*100, yMax=chartMode==="index"?100:step*4;
+      const x=i=>M.l+i/(30)*plotW, y=v=>M.t+plotH-(v/yMax)*plotH;
+      const ns="http://www.w3.org/2000/svg",svg=document.createElementNS(ns,"svg");
+      svg.setAttribute("viewBox",`0 0 ${W} ${H}`);svg.setAttribute("aria-hidden","true");
+      for(let i=0;i<=4;i++){
+        const v=i*yMax/4, yy=y(v);
+        svg.insertAdjacentHTML("beforeend",`<line x1="${M.l}" y1="${yy}" x2="${W-M.r}" y2="${yy}" stroke="#d8d4cb" stroke-width="1"/><text x="${M.l-12}" y="${yy+4}" text-anchor="end" fill="#667387" font-size="12">${chartMode==="index"?Math.round(v):fmt(Math.round(v))}</text>`);
+      }
+      [0,4,9,14,19,24,30].forEach(i=>svg.insertAdjacentHTML("beforeend",`<text x="${x(i)}" y="${H-23}" text-anchor="middle" fill="#667387" font-size="12">7/${String(i+1).padStart(2,"0")}</text>`));
+      svg.insertAdjacentHTML("beforeend",`<text x="15" y="${M.t+plotH/2}" transform="rotate(-90 15 ${M.t+plotH/2})" text-anchor="middle" fill="#667387" font-size="12">${chartMode==="index"?"自身峰值＝100":"文件數"}</text>`);
+      active.forEach(b=>{
+        const max=Math.max(...b.trend),pts=b.trend.map((v,i)=>`${x(i)},${y(chartMode==="index"?v/max*100:v)}`).join(" ");
+        svg.insertAdjacentHTML("beforeend",`<polyline points="${pts}" fill="none" stroke="${b.color}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`);
+      });
+      const hoverLine=document.createElementNS(ns,"line");hoverLine.setAttribute("stroke","#24344d");hoverLine.setAttribute("stroke-width","1");hoverLine.setAttribute("stroke-dasharray","4 4");hoverLine.style.display="none";svg.appendChild(hoverLine);
+      for(let i=0;i<31;i++){
+        const r=document.createElementNS(ns,"rect");r.setAttribute("x",x(i)-plotW/62);r.setAttribute("y",M.t);r.setAttribute("width",plotW/31);r.setAttribute("height",plotH);r.setAttribute("fill","transparent");
+        r.addEventListener("pointerenter",()=>showChartTip(i));r.addEventListener("pointermove",()=>showChartTip(i));r.addEventListener("pointerleave",()=>{tt.style.display="none";hoverLine.style.display="none"});
+        svg.appendChild(r);
+      }
+      wrap.appendChild(svg);
+      function showChartTip(i){
+        hoverLine.setAttribute("x1",x(i));hoverLine.setAttribute("x2",x(i));hoverLine.setAttribute("y1",M.t);hoverLine.setAttribute("y2",M.t+plotH);hoverLine.style.display="";
+        const rows=active.map(b=>`<div class="tt-line"><span><i class="dot" style="background:${b.color}"></i>${b.short}</span><strong>${chartMode==="index"?(b.trend[i]/Math.max(...b.trend)*100).toFixed(1):fmt(b.trend[i])}${chartMode==="index"?"":" 則"}</strong></div>`).join("");
+        tt.innerHTML=`<div class="tt-date">2026/07/${String(i+1).padStart(2,"0")}</div>${rows}`;tt.style.display="block";
+        const px=x(i)/W*wrap.clientWidth;tt.style.left=Math.max(8,Math.min(wrap.clientWidth-tt.offsetWidth-8,px-tt.offsetWidth/2))+"px";tt.style.top=Math.max(5,(M.t/H*wrap.clientWidth)-2)+"px";
+      }
+    }
+    document.getElementById("mode-absolute").addEventListener("click",()=>setMode("absolute"));
+    document.getElementById("mode-index").addEventListener("click",()=>setMode("index"));
+    function setMode(mode){chartMode=mode;document.getElementById("mode-absolute").setAttribute("aria-pressed",mode==="absolute");document.getElementById("mode-index").setAttribute("aria-pressed",mode==="index");renderLineChart()}
+
+    const sourceLabels={Facebook:"Facebook",YouTube:"YouTube",Threads:"Threads",Instagram:"Instagram",Forum:"論壇／BBS",Other:"其他"};
+    function renderSources(){
+      document.getElementById("source-legend").innerHTML=Object.keys(sourceLabels).map(k=>`<span><i class="swatch" style="background:${reportData.sourceColors[k]}"></i>${sourceLabels[k]}</span>`).join("");
+      document.getElementById("source-bars").innerHTML=reportData.brands.map(b=>`
+        <div class="stack-row">
+          <div class="stack-label">${b.short}</div>
+          <div class="stackbar" aria-label="${b.name} 聲量來源分布">
+            ${Object.entries(b.sources).map(([k,v])=>v?`<button type="button" class="stack-segment" style="width:${v/b.total*100}%;background:${reportData.sourceColors[k]}" data-tip="<strong>${b.name}｜${sourceLabels[k]}</strong>${fmt(v)} 則・${pct(v,b.total)}" aria-label="${sourceLabels[k]} ${fmt(v)} 則，占 ${pct(v,b.total)}"></button>`:"").join("")}
+          </div>
+          <div class="stack-total">${fmt(b.total)}</div>
+        </div>`).join("");
+      bindTips(document.getElementById("source-bars"));
+    }
+    function renderSentiment(){
+      const colors={positive:"var(--positive)",neutral:"var(--neutral)",negative:"var(--negative)"},labels={positive:"正面",neutral:"中立",negative:"負面"};
+      document.getElementById("sentiment-bars").innerHTML=reportData.brands.map(b=>`
+        <div class="stack-row">
+          <div class="stack-label">${b.short}</div>
+          <div class="stackbar" aria-label="${b.name} 情緒分布">
+            ${Object.entries(b.sentiment).map(([k,v])=>`<button type="button" class="stack-segment" style="width:${v/b.total*100}%;background:${colors[k]}" data-tip="<strong>${b.name}｜${labels[k]}</strong>${fmt(v)} 則・${pct(v,b.total)}" aria-label="${labels[k]} ${fmt(v)} 則，占 ${pct(v,b.total)}"></button>`).join("")}
+          </div><div class="stack-total">${fmt(b.total)}</div>
+        </div>`).join("");
+      document.getElementById("ratio-board").innerHTML=`<h3>正面 ÷ 負面</h3>`+reportData.brands.map(b=>{const r=b.sentiment.positive/b.sentiment.negative;return `<div class="ratio-item"><span>${b.short}</span><strong class="${r<1?"watch":"good"}">${r.toFixed(2)}×</strong></div>`}).join("")+`<div class="chart-note">高於 1 表示正面量多於負面量；不代表淨推薦值。</div>`;
+      bindTips(document.getElementById("sentiment-bars"));
+    }
+    let cloudBrand="kymco";
+    function renderCloudTabs(){
+      const box=document.getElementById("brand-tabs");box.innerHTML=reportData.brands.map(b=>`<button type="button" class="brand-tab" data-id="${b.id}" aria-pressed="${b.id===cloudBrand}">${b.short}</button>`).join("");
+      box.querySelectorAll("button").forEach(btn=>btn.addEventListener("click",()=>{cloudBrand=btn.dataset.id;renderCloudTabs();renderCloud()}));
+    }
+    function renderCloud(){
+      const b=reportData.brands.find(x=>x.id===cloudBrand),scores=b.terms.map(x=>x[1]),min=Math.min(...scores),max=Math.max(...scores);
+      document.getElementById("wordcloud").innerHTML=b.terms.map((t,i)=>{
+        const size=13+Math.sqrt((t[1]-min)/(max-min||1))*24,rot=i%9===5?"-2deg":i%11===3?"2deg":"0";
+        return `<span class="word" style="font-size:${size.toFixed(1)}px;transform:rotate(${rot})" tabindex="0" data-tip="<strong>${t[0]}</strong>關鍵詞分數 ${fmt(t[1])}<br>涵蓋文件 DF ${fmt(t[2])}">${t[0]}</span>`;
+      }).join("");
+      document.getElementById("cloud-context").textContent=b.context;bindTips(document.getElementById("wordcloud"));
+    }
+    renderRanking();renderLegend();renderLineChart();renderSources();renderSentiment();renderCloudTabs();renderCloud();
+    addEventListener("resize",()=>renderLineChart(),{passive:true});
+  </script>
+</body>
+</html>

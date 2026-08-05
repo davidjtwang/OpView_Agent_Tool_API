@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>台灣汽車品牌社群聲量月報｜2026.07</title>
+  <style>
+    :root{
+      --ink:#18231f;--muted:#65736d;--paper:#f4f1e9;--panel:#fffdf8;--line:#d9d5ca;
+      --green:#143d33;--lime:#cde66f;--orange:#f18f5b;--red:#d95c59;--blue:#4889c7;
+      --shadow:0 18px 50px rgba(38,49,43,.08);--r:20px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6}
+    a{color:inherit}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    header{background:var(--green);color:#fff;padding:68px 0 52px;position:relative;overflow:hidden}
+    header:after{content:"";position:absolute;right:-80px;top:-170px;width:480px;height:480px;border:80px solid rgba(205,230,111,.16);border-radius:50%}
+    .eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);font-weight:700}
+    h1{font-size:clamp(34px,6vw,68px);line-height:1.05;letter-spacing:-.04em;margin:14px 0 20px;max-width:880px}
+    .lede{max-width:760px;color:#dbe5df;font-size:17px;margin:0}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .chip{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 12px;font-size:12px;color:#f3f7f5}
+    nav{position:sticky;top:0;z-index:10;background:rgba(244,241,233,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    nav .wrap{display:flex;gap:22px;overflow:auto;padding-block:12px}
+    nav a{text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap}
+    main{padding:34px 0 80px}
+    section{margin:48px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:18px}
+    h2{font-size:clamp(26px,4vw,38px);line-height:1.15;letter-spacing:-.025em;margin:0}
+    h3{font-size:18px;margin:0 0 12px}
+    .note{color:var(--muted);font-size:13px;max-width:620px}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+    .kpi{padding:22px;min-height:142px;display:flex;flex-direction:column;justify-content:space-between}
+    .kpi-label{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.06em}
+    .kpi-value{font-size:34px;line-height:1;font-weight:800;letter-spacing:-.04em}
+    .kpi-sub{font-size:12px;color:var(--muted)}
+    .grid-2{display:grid;grid-template-columns:1.12fr .88fr;gap:16px}
+    .panel{padding:22px}
+    .bars{display:grid;gap:12px}
+    .bar-row{display:grid;grid-template-columns:126px 1fr 82px;align-items:center;gap:12px;font-size:13px}
+    .bar-label{font-weight:750}
+    .track{height:13px;background:#e6e2d9;border-radius:99px;overflow:hidden}
+    .fill{height:100%;border-radius:99px;background:var(--green)}
+    .bar-value{text-align:right;font-variant-numeric:tabular-nums}
+    .chart-toolbar{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 14px}
+    button,.select{font:inherit}
+    .toggle{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 10px;font-size:12px;cursor:pointer;color:var(--ink)}
+    .toggle.on{background:var(--green);color:#fff;border-color:var(--green)}
+    .chart-box{width:100%;min-height:340px}
+    .chart-box svg{display:block;width:100%;height:auto}
+    .chart-grid{stroke:#dedbd2;stroke-width:1}
+    .chart-axis{fill:var(--muted);font-size:11px}
+    .trend-point{fill-opacity:0;stroke-width:0;cursor:crosshair;transition:fill-opacity .12s,stroke-width .12s}
+    .trend-point:hover{fill-opacity:1;stroke-width:3}
+    .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;font-size:12px}
+    .legend span{display:inline-flex;align-items:center;gap:6px}
+    .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+    .sentiments{display:grid;gap:14px}
+    .sent-row{display:grid;grid-template-columns:116px minmax(220px,1fr) 72px;gap:12px;align-items:center;font-size:13px}
+    .sent-track{display:flex;height:16px;border-radius:99px;overflow:hidden;background:#e9e6df}
+    .sent-pos{background:#5b9f78}.sent-neu{background:#c7cbc6}.sent-neg{background:var(--red)}
+    .ratio{text-align:right;font-weight:750;font-variant-numeric:tabular-nums}
+    .ratio.bad{color:#a03835}.ratio.good{color:#26714b}
+    .source-layout{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:center}
+    .donut{width:240px;aspect-ratio:1;border-radius:50%;position:relative;margin:auto}
+    .donut svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+    .donut-segment{cursor:crosshair;transition:stroke-width .14s,opacity .14s}
+    .donut-segment:hover{stroke-width:58;opacity:.88}
+    .donut-center{position:absolute;inset:0;z-index:1;display:grid;place-content:center;text-align:center}
+    .donut-center{pointer-events:none}
+    .donut-center strong{font-size:28px;line-height:1}.donut-center span{font-size:11px;color:var(--muted)}
+    .source-list{display:grid;gap:10px}
+    .source-item{display:grid;grid-template-columns:12px minmax(130px,1fr) 90px 52px;gap:10px;align-items:center;font-size:13px}
+    .source-item b{text-align:right;font-variant-numeric:tabular-nums}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th,td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    td.num{text-align:right;font-variant-numeric:tabular-nums}
+    .brand-detail-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}
+    .select{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);padding:9px 12px}
+    .detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .detail-metric{padding:14px;border-top:3px solid var(--green);background:#f0ede5}
+    .detail-metric span{display:block;color:var(--muted);font-size:11px}
+    .detail-metric strong{font-size:19px}
+    .mini-sources{display:grid;gap:8px;margin-top:16px}
+    .mini-row{display:grid;grid-template-columns:120px 1fr 46px;gap:10px;align-items:center;font-size:12px}
+    .word-cloud{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px 14px;padding:30px;min-height:300px}
+    .word{font-weight:750;line-height:1;color:var(--green)}
+    [data-tip]{cursor:crosshair}
+    .floating-tip{position:fixed;z-index:9999;max-width:280px;padding:9px 11px;border-radius:10px;background:#102f27;color:#fff;box-shadow:0 12px 32px rgba(0,0,0,.2);font-size:12px;line-height:1.45;white-space:pre-line;pointer-events:none;opacity:0;transform:translate(10px,10px);transition:opacity .1s}
+    .floating-tip.show{opacity:1}
+    .events{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .event{padding:22px}
+    .event-date{color:var(--orange);font-size:12px;font-weight:800}
+    .event p{font-size:14px;color:var(--muted);margin:8px 0 0}
+    .insights{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
+    .dark{background:var(--green);color:#fff;border-color:var(--green)}
+    .dark .note{color:#cbd8d1}
+    .insight-list,.rec-list{display:grid;gap:16px;margin:0;padding:0;list-style:none}
+    .insight-list li,.rec-list li{display:grid;grid-template-columns:34px 1fr;gap:12px}
+    .num-badge{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:var(--green);font-size:12px;font-weight:900}
+    .rec-list .num-badge{background:var(--green);color:#fff}
+    .list-title{font-weight:800;display:block;margin-bottom:3px}
+    .list-body{font-size:13px;color:var(--muted)}
+    .dark .list-body{color:#cbd8d1}
+    .method{background:#e9e5dc;border-left:4px solid var(--orange);padding:22px 24px;font-size:12px;color:#53615b}
+    footer{border-top:1px solid var(--line);padding:24px 0 42px;color:var(--muted);font-size:12px}
+    @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.grid-2,.source-layout,.insights{grid-template-columns:1fr}.detail-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.wrap{width:min(100% - 24px,1180px)}header{padding-top:46px}.kpis,.events{grid-template-columns:1fr}.bar-row{grid-template-columns:88px 1fr 68px}.sent-row{grid-template-columns:78px 1fr 58px}.panel{padding:16px}.source-item{grid-template-columns:12px 1fr 68px 44px}.section-head{align-items:start;flex-direction:column}.detail-grid{grid-template-columns:1fr 1fr}}
+    @media print{nav{display:none}body{background:#fff}.card{box-shadow:none;break-inside:avoid}section{break-inside:avoid}header{padding:34px 0}.wrap{width:94%}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">OPView Social Listening Report · Taiwan</div>
+      <h1>台灣主要汽車品牌<br>社群聲量月報</h1>
+      <p class="lede">比較 10 個代表性品牌的討論聲量、來源結構、情緒與熱門議題，辨識可放大的正向動能與需要優先處理的風險訊號。</p>
+      <div class="meta">
+        <span class="chip">觀測期間 2026/07/01–07/30</span>
+        <span class="chip">主文＋回覆</span>
+        <span class="chip">Facebook／Instagram／Threads／YouTube／Dcard／論壇／BBS</span>
+        <span class="chip">資料來源 OPView</span>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="wrap">
+      <a href="#overview">總覽</a><a href="#trend">聲量趨勢</a><a href="#sentiment">情緒</a>
+      <a href="#sources">來源</a><a href="#topics">文字雲</a><a href="#events">高峰事件</a><a href="#recommendations">建議</a>
+    </div>
+  </nav>
+  <main class="wrap">
+    <section id="overview">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--orange)">01 · Executive pulse</div><h2>市場討論總覽</h2></div><div class="note">「品牌聲量加總」允許同一篇內容同時提及多個品牌；「跨品牌不重複內容」則是至少命中一個觀測品牌的內容數。</div></div>
+      <div class="kpis">
+        <div class="card kpi"><span class="kpi-label">跨品牌不重複內容</span><strong class="kpi-value" id="kpiUnique">—</strong><span class="kpi-sub">30 天、所有指定社群來源</span></div>
+        <div class="card kpi"><span class="kpi-label">聲量冠軍</span><strong class="kpi-value" id="kpiLeader">—</strong><span class="kpi-sub" id="kpiLeaderSub">—</span></div>
+        <div class="card kpi"><span class="kpi-label">最高正負比</span><strong class="kpi-value" id="kpiBest">—</strong><span class="kpi-sub" id="kpiBestSub">—</span></div>
+        <div class="card kpi"><span class="kpi-label">高風險品牌數</span><strong class="kpi-value" id="kpiRisk">—</strong><span class="kpi-sub">正向／負向比低於 1</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="grid-2">
+        <div class="card panel"><h3>品牌聲量排名</h3><div class="note" style="margin-bottom:16px">以各品牌命中內容數排序；右側為選定品牌聲量加總中的相對占比。</div><div class="bars" id="ranking"></div></div>
+        <div class="card panel">
+          <div class="brand-detail-head"><div><h3>品牌快照</h3><div class="note">切換品牌查看高峰、情緒與主要來源。</div></div><select class="select" id="brandSelect" aria-label="選擇品牌"></select></div>
+          <div class="detail-grid" id="brandMetrics"></div><div class="mini-sources" id="brandSources"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trend">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--orange)">02 · Conversation velocity</div><h2>每日聲量趨勢</h2></div><div class="note">點選品牌可加入／移除折線。第一眼顯示聲量前五名，便於比較事件尖峰與常態基線。</div></div>
+      <div class="card panel"><div class="chart-toolbar" id="trendToggles"></div><div class="chart-box" id="trendChart"></div><div class="legend" id="trendLegend"></div></div>
+    </section>
+
+    <section id="sentiment">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--orange)">03 · Brand temperature</div><h2>正負情緒結構</h2></div><div class="note">每列為品牌內容中的正向、中立、負向占比；右側為正向／負向比。大於 1 表示正向高於負向。</div></div>
+      <div class="card panel"><div class="legend" style="margin:0 0 18px"><span><i class="dot" style="background:#5b9f78"></i>正向</span><span><i class="dot" style="background:#c7cbc6"></i>中立</span><span><i class="dot" style="background:var(--red)"></i>負向</span></div><div class="sentiments" id="sentiments"></div></div>
+    </section>
+
+    <section id="sources">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--orange)">04 · Channel mix</div><h2>討論來源與關鍵陣地</h2></div><div class="note">來源占比以跨品牌不重複內容計算。Facebook 粉專、公開／不公開社團與 Threads 合計約 79.7%。</div></div>
+      <div class="grid-2">
+        <div class="card panel"><div class="source-layout"><div class="donut" id="sourceDonut"><div class="donut-center"><strong>434.9K</strong><span>不重複內容</span></div></div><div class="source-list" id="sourceList"></div></div></div>
+        <div class="card panel"><h3>高聲量頻道 Top 8</h3><div class="note" style="margin-bottom:10px">此表反映品牌內容最常聚集的實際頻道；Threads 關鍵字搜尋為跨帳號彙整來源。</div><div style="overflow:auto"><table><thead><tr><th>排名</th><th>來源／頻道</th><th class="num">聲量</th><th class="num">占比</th></tr></thead><tbody id="channelTable"></tbody></table></div></div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--orange)">05 · Topic signals</div><h2>熱門關鍵詞文字雲</h2></div><div class="note">字級依 OPView 關鍵詞分數呈現；品牌名已盡可能排除。點題重心集中於持有成本、車況、電動化與配備體驗。</div></div>
+      <div class="card word-cloud" id="wordCloud" aria-label="熱門關鍵詞文字雲"></div>
+    </section>
+
+    <section id="events">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--orange)">06 · Peak drivers</div><h2>高峰日熱門主文樣本</h2></div><div class="note">以下是高峰日的熱門主文線索，用來解讀聲量脈絡；不等同於完整因果歸因。</div></div>
+      <div class="events">
+        <article class="card event"><div class="event-date">TOYOTA · 07/08 · 11,245</div><h3>經銷直播與產品／價格內容共同推高聲量</h3><p>熱門主文包含經銷商購車直播、Yaris Cross 促銷、Sienna 價格討論、油電車成本與 RAV4 PHEV 試駕。屬可被規劃與放大的「產品＋轉換」型高峰。</p></article>
+        <article class="card event"><div class="event-date">HONDA · 07/19 · 2,080</div><h3>新車評測與二輪產品混合帶動</h3><p>CR-V e:HEV 價格／油耗評測是汽車端主要內容；同日也有 CB400、CB350RS 等二輪話題。品牌監測應再分汽車與機車子題，才能對準行銷成效。</p></article>
+        <article class="card event"><div class="event-date">MERCEDES-BENZ · 07/19 · 6,684</div><h3>重大事故新聞觸發負向爆量</h3><p>台中毒駕連環撞與社區堵車爭議被大量轉載，品牌名稱作為涉事車輛描述而被帶入。這解釋了全月高聲量卻僅 0.46 的正負比。</p></article>
+        <article class="card event"><div class="event-date">TESLA · 07/23 · 5,414</div><h3>道路爭議與財務消息形成雙重壓力</h3><p>救護車避讓爭議在 Facebook、Ptt 擴散，同日亦出現獲利下滑消息。建議把道路事件、產品議題與公司／執行長議題分流監測。</p></article>
+      </div>
+    </section>
+
+    <section id="recommendations">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--orange)">07 · What to do next</div><h2>觀察摘要與行銷建議</h2></div></div>
+      <div class="insights">
+        <div class="card panel dark"><h3>觀察摘要</h3><ul class="insight-list">
+          <li><span class="num-badge">1</span><div><span class="list-title">聲量由三個品牌主導</span><span class="list-body">Toyota、Tesla、Mercedes-Benz 合計占選定品牌聲量約六成，且三者的尖峰性質完全不同：促銷轉換、道路議題、事故新聞。</span></div></li>
+          <li><span class="num-badge">2</span><div><span class="list-title">高聲量不等於高好感</span><span class="list-body">Mercedes-Benz 與 Tesla 都是高聲量品牌，但正負比分別僅 0.46、0.49；Mitsubishi 與 Hyundai 則呈現「低量高好感」。</span></div></li>
+          <li><span class="num-badge">3</span><div><span class="list-title">社團與車主場域決定口碑</span><span class="list-body">Facebook 粉專／社團和 Threads 是主要聲量來源；BMW、Lexus 的不公開社團占比尤其高，顯示交易、改裝與持有經驗是重要口碑場景。</span></div></li>
+          <li><span class="num-badge">4</span><div><span class="list-title">消費者在意「買後」而非只有新車</span><span class="list-body">里程、車況、售價、原廠、保固與配備都是核心詞，反映中古交易、總持有成本與使用體驗對討論的貢獻。</span></div></li>
+        </ul></div>
+        <div class="card panel"><h3>行銷建議</h3><ul class="rec-list">
+          <li><span class="num-badge">1</span><div><span class="list-title">建立 2 小時內的事件回應機制</span><span class="list-body">Mercedes-Benz、Tesla 應把事故、道路爭議與公司議題設為獨立風險標籤；高峰出現時先判斷「品牌可控／不可控」，再決定澄清、關懷或不放大。</span></div></li>
+          <li><span class="num-badge">2</span><div><span class="list-title">用持有成本內容承接搜尋與社團需求</span><span class="list-body">以 3 年／5 年總持有成本、真實里程、保固、電池與保養透明表，搭配車主案例與可下載清單；比單純規格廣告更貼近目前討論語言。</span></div></li>
+          <li><span class="num-badge">3</span><div><span class="list-title">依來源設計不同任務</span><span class="list-body">粉專負責產品教育與名單轉換；公開社團用車主實證與答疑；Threads 進行快速議題回應；YouTube 則承接長影音試駕與比較評測。</span></div></li>
+          <li><span class="num-badge">4</span><div><span class="list-title">把「低量高好感」轉為品牌擴張</span><span class="list-body">Mitsubishi、Hyundai 可放大滿意車主、售後服務與長期使用故事，並以相似受眾投放擴聲；Toyota 則應把直播高峰導向試駕與 CRM，而非只看互動數。</span></div></li>
+          <li><span class="num-badge">5</span><div><span class="list-title">重做監測分類，提升決策精度</span><span class="list-body">下一輪應區分汽車／機車、品牌官方／事故帶入、國內／海外與新車／中古車，並建立品牌共現矩陣，避免 Honda 二輪或「賓士貓」等語意噪音扭曲 KPI。</span></div></li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section class="method">
+      <strong>方法與限制：</strong>本報告以 OPView 資料庫於 2026/07/01–07/30 命中指定品牌別名的社群內容為基礎，涵蓋主文與回覆。個別品牌總量允許跨品牌重複；來源占比使用跨品牌不重複內容。情緒為機器判讀，適合觀察相對差異與趨勢，不應視為人工標註的絕對真值。品牌字詞可能含同名、人名、機車或「賓士貓」等語意噪音；高風險決策前建議再以議題分類與人工抽樣複核。
+    </section>
+  </main>
+  <footer><div class="wrap">資料來源：OPView Agent Tools｜製表日期：2026/07/31｜報告範圍：台灣社群公開與已授權來源</div></footer>
+  <div class="floating-tip" id="floatingTip" role="status" aria-live="polite"></div>
+
+  <script>
+  const DATA={"meta":{"start":"2026-07-01","end":"2026-07-30","totalUnique":434909,"brands":10},"dates":["07/01","07/02","07/03","07/04","07/05","07/06","07/07","07/08","07/09","07/10","07/11","07/12","07/13","07/14","07/15","07/16","07/17","07/18","07/19","07/20","07/21","07/22","07/23","07/24","07/25","07/26","07/27","07/28","07/29","07/30"],"brands":[{"name":"Toyota","total":111858,"daily":[4517,3791,3264,2249,2144,2872,5910,11245,6370,3377,1953,1883,3073,6029,5734,7810,4690,2629,2139,2451,4967,3704,2692,3867,2370,1891,1986,2228,2498,1525],"pos":18937,"neg":9910,"neutral":83012,"pn":1.91,"peakDate":"07/08","peak":11245,"topSources":[{"name":"Facebook粉絲團","value":59556,"share":53.2},{"name":"Facebook公開社團","value":22411,"share":20},{"name":"YouTube","value":9910,"share":8.9},{"name":"Threads","value":6257,"share":5.6}]},{"name":"Lexus","total":23303,"daily":[843,938,638,667,706,726,904,646,647,604,496,615,878,888,787,806,889,996,772,715,870,849,1098,894,880,545,738,796,870,602],"pos":3966,"neg":1396,"neutral":17941,"pn":2.84,"peakDate":"07/23","peak":1098,"topSources":[{"name":"Facebook不公開社團","value":7146,"share":30.7},{"name":"Facebook公開社團","value":5727,"share":24.6},{"name":"Threads","value":4340,"share":18.6},{"name":"Facebook粉絲團","value":2400,"share":10.3}]},{"name":"Nissan","total":22477,"daily":[676,748,606,646,763,1723,1845,1068,705,773,632,617,1020,842,839,723,625,683,524,596,587,591,686,718,855,555,520,569,470,272],"pos":3888,"neg":2796,"neutral":15793,"pn":1.39,"peakDate":"07/07","peak":1845,"topSources":[{"name":"Facebook粉絲團","value":5634,"share":25.1},{"name":"Facebook公開社團","value":5028,"share":22.4},{"name":"Facebook不公開社團","value":4026,"share":17.9},{"name":"Threads","value":2936,"share":13.1}]},{"name":"Honda","total":39370,"daily":[1275,1520,966,846,1490,1410,1731,1182,978,1210,1117,1386,1360,1665,1969,1523,1380,1599,2080,1725,1065,989,1069,1294,1360,855,1010,1020,1388,908],"pos":6729,"neg":4148,"neutral":28493,"pn":1.62,"peakDate":"07/19","peak":2080,"topSources":[{"name":"Facebook粉絲團","value":14477,"share":36.8},{"name":"Facebook公開社團","value":8117,"share":20.6},{"name":"Facebook不公開社團","value":4650,"share":11.8},{"name":"Threads","value":4188,"share":10.6}]},{"name":"Ford","total":31985,"daily":[3320,1438,1131,986,1032,1153,983,973,1439,1302,886,1124,953,859,697,1584,1815,1115,808,1135,785,732,754,1077,927,701,602,530,667,477],"pos":3903,"neg":4037,"neutral":24045,"pn":0.97,"peakDate":"07/01","peak":3320,"topSources":[{"name":"Facebook粉絲團","value":12419,"share":38.8},{"name":"Facebook公開社團","value":7293,"share":22.8},{"name":"Threads","value":6975,"share":21.8},{"name":"YouTube","value":2104,"share":6.6}]},{"name":"Mitsubishi","total":3404,"daily":[257,183,122,164,109,95,99,105,119,111,89,77,140,113,102,120,72,131,146,119,96,90,133,98,113,82,77,74,78,90],"pos":1057,"neg":153,"neutral":2194,"pn":6.91,"peakDate":"07/01","peak":257,"topSources":[{"name":"Facebook公開社團","value":1298,"share":38.1},{"name":"Facebook粉絲團","value":816,"share":24},{"name":"Threads","value":547,"share":16.1},{"name":"YouTube關鍵字搜尋","value":313,"share":9.2}]},{"name":"Mercedes-Benz","total":85106,"daily":[2215,2113,3391,2361,5426,2130,2072,3632,4277,2972,1975,2142,2187,2119,1958,2546,2193,2977,6684,5597,4601,2836,2909,2461,2285,2162,1549,1898,1607,1831],"pos":8934,"neg":19425,"neutral":56747,"pn":0.46,"peakDate":"07/19","peak":6684,"topSources":[{"name":"Facebook粉絲團","value":38933,"share":45.7},{"name":"Facebook公開社團","value":11470,"share":13.5},{"name":"YouTube","value":10195,"share":12},{"name":"Facebook不公開社團","value":9897,"share":11.6}]},{"name":"BMW","total":59876,"daily":[3381,2400,2582,1877,1962,1738,1876,1530,1351,1579,1367,1618,2181,2215,1790,1913,1926,1820,2002,2727,2638,2129,2457,2220,1688,1432,1425,1914,2087,2051],"pos":8329,"neg":4822,"neutral":46725,"pn":1.73,"peakDate":"07/01","peak":3381,"topSources":[{"name":"Facebook不公開社團","value":19658,"share":32.8},{"name":"Facebook粉絲團","value":11815,"share":19.7},{"name":"YouTube","value":8242,"share":13.8},{"name":"Facebook公開社團","value":7026,"share":11.7}]},{"name":"Hyundai","total":8485,"daily":[256,246,706,714,333,374,475,350,296,301,210,252,332,188,261,174,253,488,237,248,221,169,117,181,486,125,114,191,110,77],"pos":3186,"neg":945,"neutral":4354,"pn":3.37,"peakDate":"07/04","peak":714,"topSources":[{"name":"Facebook粉絲團","value":3310,"share":39},{"name":"Facebook公開社團","value":1735,"share":20.4},{"name":"Threads","value":1354,"share":16},{"name":"Ptt","value":759,"share":8.9}]},{"name":"Tesla","total":94911,"daily":[3228,2954,3292,2715,2700,2222,3317,4971,3879,3291,3257,2941,2828,3175,3126,4320,4511,2499,3061,2861,3123,2911,5414,5034,2773,2046,2076,2237,2491,1658],"pos":11282,"neg":22808,"neutral":60821,"pn":0.49,"peakDate":"07/23","peak":5414,"topSources":[{"name":"Facebook公開社團","value":30407,"share":32},{"name":"Facebook粉絲團","value":29404,"share":31},{"name":"Threads","value":11904,"share":12.5},{"name":"YouTube","value":11455,"share":12.1}]}],"sources":[{"name":"Facebook粉絲團","value":171835,"share":39.5},{"name":"Facebook公開社團","value":94634,"share":21.8},{"name":"Threads","value":49625,"share":11.4},{"name":"YouTube","value":46080,"share":10.6},{"name":"Facebook不公開社團","value":30566,"share":7},{"name":"Ptt","value":19054,"share":4.4},{"name":"Mobile01","value":6444,"share":1.5},{"name":"YouTube關鍵字搜尋","value":5155,"share":1.2},{"name":"Instagram","value":5130,"share":1.2},{"name":"YouTube觀看次數最多","value":2765,"share":0.6},{"name":"Dcard","value":2180,"share":0.5},{"name":"小老婆汽機車資訊網","value":439,"share":0.1}],"keywords":[{"term":"里程","score":4842},{"term":"公里","score":2979},{"term":"電動","score":2834},{"term":"座椅","score":2200},{"term":"總代理","score":1807},{"term":"車況","score":1716},{"term":"售價","score":1684},{"term":"鑰匙","score":1659},{"term":"天窗","score":1633},{"term":"環景","score":1527},{"term":"智慧","score":1501},{"term":"方向盤","score":1447},{"term":"頭燈","score":1408},{"term":"原廠","score":1378},{"term":"重點配備","score":1326},{"term":"實車","score":1314},{"term":"尾門","score":1284},{"term":"空調","score":1216},{"term":"盲點","score":1198},{"term":"實價","score":1189},{"term":"引擎","score":1158},{"term":"鈑件","score":1136},{"term":"賞車","score":1101},{"term":"LED","score":1083},{"term":"鋁圈","score":1053},{"term":"音響","score":1038},{"term":"性能","score":966},{"term":"動力","score":931},{"term":"Apple CarPlay","score":921},{"term":"經典","score":921},{"term":"套件","score":914},{"term":"休旅","score":884},{"term":"AMG","score":870},{"term":"車主","score":870},{"term":"事故","score":865},{"term":"內裝","score":865}]};
+  const CHANNELS=[
+    {source:"Threads",channel:"Threads 關鍵字搜尋",value:48130,share:11.1},
+    {source:"Facebook 粉絲團",channel:"Toyota.國都",value:25047,share:5.8},
+    {source:"Facebook 公開社團",channel:"TESLA Taiwan Model 3/Y 特斯拉台灣車主群",value:22988,share:5.3},
+    {source:"Ptt",channel:"car",value:10728,share:2.5},
+    {source:"Facebook 公開社團",channel:"純自售｜自售車、二手車、中古車",value:9626,share:2.2},
+    {source:"Facebook 粉絲團",channel:"Mercedes-Benz",value:9118,share:2.1},
+    {source:"Facebook 不公開社團",channel:"BMW 寶馬自售販賣社",value:6941,share:1.6},
+    {source:"Facebook 粉絲團",channel:"東森財經",value:6720,share:1.5}
+  ];
+  const COLORS=["#143d33","#f18f5b","#4889c7","#8b6fb0","#c39433","#2f8e87","#d95c59","#71884a","#b26d8d","#2f5e96","#9b9b91","#cbbf9e"];
+  const fmt=n=>new Intl.NumberFormat("zh-TW").format(n);
+  const sumBrand=DATA.brands.reduce((s,b)=>s+b.total,0);
+  const sorted=[...DATA.brands].sort((a,b)=>b.total-a.total);
+  const leader=sorted[0], best=[...DATA.brands].sort((a,b)=>b.pn-a.pn)[0], risks=DATA.brands.filter(b=>b.pn<1);
+  document.getElementById("kpiUnique").textContent=fmt(DATA.meta.totalUnique);
+  document.getElementById("kpiLeader").textContent=leader.name;
+  document.getElementById("kpiLeaderSub").textContent=`${fmt(leader.total)} 則｜相對聲量 ${(leader.total/sumBrand*100).toFixed(1)}%`;
+  document.getElementById("kpiBest").textContent=best.name;
+  document.getElementById("kpiBestSub").textContent=`正負比 ${best.pn.toFixed(2)}｜聲量 ${fmt(best.total)}`;
+  document.getElementById("kpiRisk").textContent=risks.length+" 個";
+
+  document.getElementById("ranking").innerHTML=sorted.map((b,i)=>`<div class="bar-row" data-tip="${b.name}\n全月聲量：${fmt(b.total)}\n相對聲量：${(b.total/sumBrand*100).toFixed(1)}%\n高峰：${b.peakDate} · ${fmt(b.peak)}"><span class="bar-label">${i+1}. ${b.name}</span><span class="track"><span class="fill" style="display:block;width:${b.total/leader.total*100}%;background:${COLORS[i]}"></span></span><span class="bar-value">${(b.total/sumBrand*100).toFixed(1)}%</span></div>`).join("");
+
+  const select=document.getElementById("brandSelect");
+  select.innerHTML=sorted.map(b=>`<option>${b.name}</option>`).join("");
+  function renderBrandDetail(){
+    const b=DATA.brands.find(x=>x.name===select.value);
+    const totalSent=b.pos+b.neg+b.neutral;
+    document.getElementById("brandMetrics").innerHTML=[
+      ["全月聲量",fmt(b.total)],["高峰",`${b.peakDate} · ${fmt(b.peak)}`],["正負比",b.pn.toFixed(2)],["正向占比",(b.pos/totalSent*100).toFixed(1)+"%"]
+    ].map(x=>`<div class="detail-metric"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join("");
+    document.getElementById("brandSources").innerHTML=`<div class="note">主要來源</div>`+b.topSources.map(s=>`<div class="mini-row"><span>${s.name}</span><span class="track"><i class="fill" style="display:block;width:${s.share}%"></i></span><b>${s.share}%</b></div>`).join("");
+  }
+  select.addEventListener("change",renderBrandDetail);renderBrandDetail();
+
+  const selected=new Set(sorted.slice(0,5).map(b=>b.name));
+  const toggleBox=document.getElementById("trendToggles");
+  function renderToggles(){
+    toggleBox.innerHTML=DATA.brands.map(b=>`<button class="toggle ${selected.has(b.name)?"on":""}" data-brand="${b.name}" aria-pressed="${selected.has(b.name)}">${b.name}</button>`).join("");
+    toggleBox.querySelectorAll("button").forEach(btn=>btn.addEventListener("click",()=>{
+      if(selected.has(btn.dataset.brand)){if(selected.size>1)selected.delete(btn.dataset.brand)}else selected.add(btn.dataset.brand);
+      renderToggles();renderTrend();
+    }));
+  }
+  function linePath(values,max,w=900,h=285,x0=60,y0=18){
+    return values.map((v,i)=>`${i?"L":"M"}${(x0+i*(w/(values.length-1))).toFixed(1)},${(y0+h-(v/max*h)).toFixed(1)}`).join(" ");
+  }
+  function renderTrend(){
+    const active=DATA.brands.filter(b=>selected.has(b.name));
+    const max=Math.max(...active.flatMap(b=>b.daily));
+    const ceil=Math.ceil(max/1000)*1000;
+    let svg=`<svg viewBox="0 0 1000 350" role="img" aria-label="每日品牌聲量折線圖"><title>每日品牌聲量折線圖</title>`;
+    for(let i=0;i<=4;i++){const y=18+i*71.25,val=Math.round(ceil*(1-i/4));svg+=`<line class="chart-grid" x1="60" y1="${y}" x2="960" y2="${y}"/><text class="chart-axis" x="50" y="${y+4}" text-anchor="end">${fmt(val)}</text>`}
+    DATA.dates.forEach((d,i)=>{if(i%5===0||i===29){const x=60+i*(900/29);svg+=`<text class="chart-axis" x="${x}" y="329" text-anchor="middle">${d}</text>`}});
+    active.forEach(b=>{
+      const ci=DATA.brands.findIndex(x=>x.name===b.name),color=COLORS[ci];
+      svg+=`<path d="${linePath(b.daily,ceil)}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+      b.daily.forEach((v,i)=>{const x=60+i*(900/29),y=18+285-(v/ceil*285);svg+=`<circle class="trend-point" cx="${x}" cy="${y}" r="7" fill="${color}" stroke="${color}" data-tip="${b.name} · ${DATA.dates[i]}\n聲量：${fmt(v)}"></circle>`});
+      const pi=b.daily.indexOf(b.peak),px=60+pi*(900/29),py=18+285-(b.peak/ceil*285);svg+=`<circle cx="${px}" cy="${py}" r="4.5" fill="${color}" pointer-events="none"></circle>`
+    });
+    svg+="</svg>";
+    document.getElementById("trendChart").innerHTML=svg;
+    document.getElementById("trendLegend").innerHTML=active.map(b=>{const ci=DATA.brands.findIndex(x=>x.name===b.name);return `<span><i class="dot" style="background:${COLORS[ci]}"></i>${b.name}｜峰值 ${b.peakDate} ${fmt(b.peak)}</span>`}).join("");
+  }
+  renderToggles();renderTrend();
+
+  document.getElementById("sentiments").innerHTML=sorted.map(b=>{
+    const t=b.pos+b.neg+b.neutral,p=b.pos/t*100,n=b.neg/t*100,u=100-p-n;
+    return `<div class="sent-row"><strong>${b.name}</strong><div class="sent-track" aria-label="${b.name}：正向${p.toFixed(1)}%，中立${u.toFixed(1)}%，負向${n.toFixed(1)}%"><i class="sent-pos" data-tip="${b.name} · 正向\n${fmt(b.pos)} 則 · ${p.toFixed(1)}%" style="width:${p}%"></i><i class="sent-neu" data-tip="${b.name} · 中立\n${fmt(b.neutral)} 則 · ${u.toFixed(1)}%" style="width:${u}%"></i><i class="sent-neg" data-tip="${b.name} · 負向\n${fmt(b.neg)} 則 · ${n.toFixed(1)}%" style="width:${n}%"></i></div><span class="ratio ${b.pn<1?"bad":b.pn>=3?"good":""}" data-tip="${b.name}\n正向／負向比：${b.pn.toFixed(2)}">${b.pn.toFixed(2)}</span></div>`
+  }).join("");
+
+  const sourceTop=DATA.sources.slice(0,8), topShare=sourceTop.reduce((s,x)=>s+x.share,0), sourceOther={name:"其他",value:DATA.meta.totalUnique-sourceTop.reduce((a,x)=>a+x.value,0),share:+(100-topShare).toFixed(1)};
+  const donutData=[...sourceTop,sourceOther],circ=2*Math.PI*90;let donutOffset=0;
+  const donutSegments=donutData.map((s,i)=>{const dash=s.share/100*circ,segment=`<circle class="donut-segment" cx="120" cy="120" r="90" fill="none" stroke="${i<sourceTop.length?COLORS[i]:"#d9d5ca"}" stroke-width="52" stroke-dasharray="${dash} ${circ-dash}" stroke-dashoffset="${-donutOffset}" transform="rotate(-90 120 120)" data-tip="${s.name}\n${fmt(s.value)} 則 · ${s.share}%"></circle>`;donutOffset+=dash;return segment}).join("");
+  document.getElementById("sourceDonut").innerHTML=`<svg viewBox="0 0 240 240" role="img" aria-label="討論來源占比環形圖">${donutSegments}</svg><div class="donut-center"><strong>434.9K</strong><span>不重複內容</span></div>`;
+  document.getElementById("sourceList").innerHTML=sourceTop.map((s,i)=>`<div class="source-item" data-tip="${s.name}\n${fmt(s.value)} 則 · ${s.share}%"><i class="dot" style="background:${COLORS[i]}"></i><span>${s.name}</span><b>${fmt(s.value)}</b><b>${s.share}%</b></div>`).join("")+`<div class="source-item" data-tip="${sourceOther.name}\n${fmt(sourceOther.value)} 則 · ${sourceOther.share}%"><i class="dot" style="background:#d9d5ca"></i><span>其他</span><b>${fmt(sourceOther.value)}</b><b>${sourceOther.share}%</b></div>`;
+  document.getElementById("channelTable").innerHTML=CHANNELS.map((c,i)=>`<tr data-tip="${c.channel}\n來源：${c.source}\n聲量：${fmt(c.value)} · 占比 ${c.share}%"><td>${i+1}</td><td><strong>${c.channel}</strong><br><span class="note">${c.source}</span></td><td class="num">${fmt(c.value)}</td><td class="num">${c.share}%</td></tr>`).join("");
+
+  const kwMax=Math.max(...DATA.keywords.map(x=>x.score)),kwMin=Math.min(...DATA.keywords.map(x=>x.score));
+  document.getElementById("wordCloud").innerHTML=DATA.keywords.map((k,i)=>{const size=14+26*(k.score-kwMin)/(kwMax-kwMin);return `<span class="word" style="font-size:${size.toFixed(0)}px;opacity:${.7+(i%4)*.08}" data-tip="${k.term}\n關鍵詞分數：${fmt(k.score)}">${k.term}</span>`}).join("");
+
+  const floatingTip=document.getElementById("floatingTip");
+  function placeTip(x,y){
+    const pad=14,w=floatingTip.offsetWidth,h=floatingTip.offsetHeight;
+    floatingTip.style.left=Math.min(x+12,window.innerWidth-w-pad)+"px";
+    floatingTip.style.top=Math.min(y+12,window.innerHeight-h-pad)+"px";
+  }
+  document.addEventListener("mouseover",e=>{
+    const target=e.target.closest?.("[data-tip]");if(!target)return;
+    floatingTip.textContent=target.dataset.tip;floatingTip.classList.add("show");placeTip(e.clientX,e.clientY);
+  });
+  document.addEventListener("mousemove",e=>{if(floatingTip.classList.contains("show"))placeTip(e.clientX,e.clientY)});
+  document.addEventListener("mouseout",e=>{
+    const target=e.target.closest?.("[data-tip]");if(target&&!target.contains(e.relatedTarget))floatingTip.classList.remove("show");
+  });
+  document.querySelectorAll("[data-tip]").forEach(el=>el.setAttribute("title",el.dataset.tip.replace(/\n/g," · ")));
+  </script>
+</body>
+</html>

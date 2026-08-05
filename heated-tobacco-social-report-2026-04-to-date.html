@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>加熱菸社群討論觀測｜2026/04 至今</title>
+  <style>
+    :root { --ink:#172033; --muted:#617089; --line:#dde4ee; --paper:#ffffff; --canvas:#f5f7fb; --navy:#1f3a5f; --blue:#3779c5; --cyan:#29a5b8; --orange:#d57d3b; --soft:#eaf1fa; --warning:#fff4df; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--canvas); font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif; line-height:1.6; }
+    .page { max-width:1120px; margin:0 auto; padding:36px 22px 56px; }
+    .hero { border-radius:18px; padding:38px 40px; color:#fff; background:linear-gradient(125deg,#152a48,#245e92); }
+    .eyebrow { margin:0 0 8px; font-size:.85rem; letter-spacing:.08em; opacity:.78; }
+    h1 { margin:0; font-weight:700; font-size:clamp(1.7rem,4vw,2.5rem); line-height:1.25; }
+    .subtitle { margin:12px 0 0; max-width:760px; color:#dceaff; }
+    .meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .pill { border:1px solid rgba(255,255,255,.34); padding:5px 11px; border-radius:999px; font-size:.86rem; }
+    main { margin-top:24px; }
+    section { margin:28px 0; }
+    h2 { font-size:1.35rem; margin:0 0 12px; color:var(--navy); }
+    h3 { font-size:1rem; margin:0 0 7px; color:var(--navy); }
+    p { margin:0 0 11px; }
+    .note { padding:15px 17px; border-left:4px solid var(--orange); border-radius:0 10px 10px 0; background:var(--warning); }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:13px; }
+    .card { padding:18px; border:1px solid var(--line); border-radius:13px; background:var(--paper); }
+    .kpi { font-size:1.9rem; line-height:1.1; color:var(--blue); font-weight:700; }
+    .label, .small { color:var(--muted); font-size:.87rem; }
+    .two { display:grid; grid-template-columns:1.35fr .85fr; gap:20px; }
+    .chart { padding:20px; border:1px solid var(--line); border-radius:13px; background:var(--paper); }
+    .bar-row { display:grid; grid-template-columns:74px 1fr 35px; align-items:center; gap:12px; margin:12px 0; font-size:.9rem; }
+    .track { height:22px; overflow:hidden; border-radius:5px; background:#edf1f6; }
+    .bar { height:100%; min-width:0; background:var(--blue); border-radius:5px; }
+    .bar.zero { background:#cbd5e1; }
+    .legend { display:flex; gap:16px; flex-wrap:wrap; color:var(--muted); font-size:.87rem; margin-top:12px; }
+    .dot { display:inline-block; width:10px; height:10px; margin-right:5px; border-radius:50%; background:var(--blue); }
+    .dot.orange { background:var(--orange); }
+    .sources { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .source-num { font-size:1.55rem; font-weight:700; color:var(--blue); }
+    .words { display:flex; flex-wrap:wrap; gap:9px; padding:19px; border:1px solid var(--line); border-radius:13px; background:var(--paper); align-items:center; }
+    .word { padding:5px 10px; border-radius:999px; background:var(--soft); color:var(--navy); }
+    .w1 { font-size:1.38rem; font-weight:700; } .w2 { font-size:1.18rem; font-weight:600; } .w3 { font-size:1rem; } .w4 { font-size:.88rem; }
+    .articles { display:grid; gap:12px; }
+    .article { padding:18px; border:1px solid var(--line); border-radius:13px; background:var(--paper); }
+    .article-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .article h3 { margin:0; font-size:1.03rem; }
+    .tag { white-space:nowrap; padding:3px 8px; border-radius:999px; background:var(--soft); color:var(--navy); font-size:.78rem; }
+    .article p { margin:8px 0; color:#39475d; }
+    a { color:#1c64ad; }
+    table { width:100%; border-collapse:collapse; background:var(--paper); border:1px solid var(--line); border-radius:13px; overflow:hidden; }
+    th,td { padding:11px 12px; text-align:left; border-bottom:1px solid var(--line); font-size:.9rem; vertical-align:top; }
+    th { color:var(--muted); background:#f9fbfd; font-weight:600; } tr:last-child td { border-bottom:0; }
+    .foot { margin-top:36px; color:var(--muted); font-size:.82rem; }
+    @media (max-width:760px) { .page{padding:20px 14px 40px}.hero{padding:27px 23px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.sources{grid-template-columns:1fr}.article-top{flex-direction:column}.bar-row{grid-template-columns:65px 1fr 25px} }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="eyebrow">SOCIAL LISTENING REPORT</p>
+      <h1>加熱菸社群討論觀測</h1>
+      <p class="subtitle">本報告呈現 2026 年 4 月 1 日至 7 月 28 日，授權社群資料庫中命中加熱菸相關詞彙的討論。結果應用於議題探索，不宜視為全台社群的完整市場規模。</p>
+      <div class="meta"><span class="pill">期間：2026/04/01–2026/07/28</span><span class="pill">範圍：授權社群來源</span><span class="pill">內容：主文＋回覆</span></div>
+    </header>
+
+    <main>
+      <section class="note">
+        <strong>先看結論：</strong>資料量極低，期間僅 6 筆命中紀錄。6 月有短暫升量（4 筆），其餘月份各 1 筆或 0 筆；內容集中於未成年／校園風險、管制政策與旅客違規攜帶。所有命中內容皆被系統標記為中性，不能據此推論整體輿情偏正或偏負。
+      </section>
+
+      <section>
+        <h2>一覽</h2>
+        <div class="grid">
+          <div class="card"><div class="kpi">6</div><div class="label">命中貼文／回覆</div></div>
+          <div class="card"><div class="kpi">5</div><div class="label">去重後討論串／貼文</div></div>
+          <div class="card"><div class="kpi">4</div><div class="label">6 月命中量（高峰月）</div></div>
+          <div class="card"><div class="kpi">100%</div><div class="label">系統標記為中性</div></div>
+        </div>
+      </section>
+
+      <section class="two">
+        <div class="chart">
+          <h2>聲量趨勢</h2>
+          <p class="small">月度命中量；6/12 為單日高點（2 筆）。</p>
+          <div class="bar-row"><span>4 月</span><div class="track"><div class="bar" style="width:25%"></div></div><strong>1</strong></div>
+          <div class="bar-row"><span>5 月</span><div class="track"><div class="bar" style="width:25%"></div></div><strong>1</strong></div>
+          <div class="bar-row"><span>6 月</span><div class="track"><div class="bar" style="width:100%"></div></div><strong>4</strong></div>
+          <div class="bar-row"><span>7 月*</span><div class="track"><div class="bar zero" style="width:0%"></div></div><strong>0</strong></div>
+          <div class="legend"><span><i class="dot"></i>命中貼文／回覆</span><span>*統計至 7/28</span></div>
+        </div>
+        <div class="chart">
+          <h2>情緒分布</h2>
+          <p class="small">系統情緒標籤彙整</p>
+          <div class="bar-row"><span>中性</span><div class="track"><div class="bar" style="width:100%;background:var(--cyan)"></div></div><strong>6</strong></div>
+          <div class="bar-row"><span>正面</span><div class="track"><div class="bar zero" style="width:0%"></div></div><strong>0</strong></div>
+          <div class="bar-row"><span>負面</span><div class="track"><div class="bar zero" style="width:0%"></div></div><strong>0</strong></div>
+          <p class="small">中性代表情緒分類未辨識出明確正／負，並不代表議題沒有風險或爭議。</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>討論分布：重點頻道</h2>
+        <div class="sources">
+          <div class="card"><div class="source-num">4 <span class="small">（66.7%）</span></div><h3>Plurk</h3><div class="small">Plurk 搜尋；主要出現在 4 月與 6 月。</div></div>
+          <div class="card"><div class="source-num">1 <span class="small">（16.7%）</span></div><h3>X</h3><div class="small">辣台鹿頻道；5 月的桃機查扣／罰鍰內容。</div></div>
+          <div class="card"><div class="source-num">1 <span class="small">（16.7%）</span></div><h3>TikTok</h3><div class="small">全家頻道；命中關聯較弱，建議人工複核。</div></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>熱議詞組／文字雲</h2>
+        <p class="small">依各期間的詞組權重彙整。樣本數小，詞頻主要反映個別貼文措辭，不代表大規模議題排名。</p>
+        <div class="words" aria-label="加熱菸熱議詞組文字雲">
+          <span class="word w1">媽媽</span><span class="word w1">小孩</span><span class="word w1">買加熱菸主機</span>
+          <span class="word w2">違規攜帶罰鍰</span><span class="word w2">關務署</span><span class="word w2">桃機</span><span class="word w2">查扣</span>
+          <span class="word w2">政策升級</span><span class="word w2">無菸時代</span><span class="word w2">兒童青少年</span>
+          <span class="word w3">公共場所</span><span class="word w3">罰則</span><span class="word w3">健保支出</span><span class="word w3">全球控菸</span>
+          <span class="word w4">鴉片戰爭借鏡</span><span class="word w4">電子菸</span><span class="word w4">法定購買</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>熱門內容與討論主軸</h2>
+        <div class="articles">
+          <article class="article">
+            <div class="article-top"><h3>未成年購買與執法風險</h3><span class="tag">Plurk｜2026/06/12</span></div>
+            <p>貼文描述母親帶著穿制服的孩子購買加熱菸主機與菸品，發文者憂心衛生局稽查。這是期間內命中度最高的內容之一，反映未成年接觸、零售端責任與執法風險的討論。</p>
+            <a href="http://www.plurk.com/p/3isc6ygm92" target="_blank" rel="noopener">查看原貼文</a> <span class="small">｜1 則留言；同討論串含 1 筆回覆紀錄</span>
+          </article>
+          <article class="article">
+            <div class="article-top"><h3>桃機查扣與違規攜帶罰鍰</h3><span class="tag">X｜2026/05/21</span></div>
+            <p>內容轉述桃機兩個月查扣近 2.8 萬條加熱菸，以及違規攜帶可能面臨的罰鍰。討論重點在跨境攜帶、管制與遵法意識。</p>
+            <a href="https://twitter.com/dryadb43738/status/2057397507693629841" target="_blank" rel="noopener">查看原貼文</a>
+          </article>
+          <article class="article">
+            <div class="article-top"><h3>兒少暴露與控菸政策</h3><span class="tag">Plurk｜2026/06/11、2026/04/24</span></div>
+            <p>兩則內容分別把加熱菸放入兒童／青少年接觸風險，以及海外無菸政策與公共場所管制的脈絡中。期間的討論基調偏向政策、公共衛生與風險敘事，而非產品評測或使用體驗。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>每日有聲量的日期</h2>
+        <table>
+          <thead><tr><th>日期</th><th>命中量</th><th>主要脈絡</th></tr></thead>
+          <tbody>
+            <tr><td>2026/04/24</td><td>1</td><td>海外控菸政策、無菸時代</td></tr>
+            <tr><td>2026/05/21</td><td>1</td><td>桃機查扣、違規攜帶與罰鍰</td></tr>
+            <tr><td>2026/06/11</td><td>1</td><td>兒少暴露與電子菸／加熱菸風險</td></tr>
+            <tr><td>2026/06/12</td><td>2</td><td>未成年購買加熱菸主機的討論串與回覆</td></tr>
+            <tr><td>2026/06/26</td><td>1</td><td>弱關聯命中，建議人工複核</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="note">
+        <strong>判讀限制與建議：</strong>本次檢索採用「加熱菸、加熱煙、加熱式菸草、加熱煙草、加熱式煙草」同義字，並排除 <code>HNB</code> 縮寫以降低網址／縮寫誤命中的雜訊；但仍有一筆 TikTok 弱關聯結果。樣本僅 6 筆，建議後續擴充授權來源與歷史範圍，並將產品品牌、法規、走私／違規、兒少風險與使用者體驗拆成獨立關鍵字群組，以獲得可比較的趨勢與情緒結論。
+      </section>
+
+      <p class="foot">資料來源：opview-agent-tools 授權社群資料。查詢時間範圍：2026/04/01 00:00 至 2026/07/28 23:59（Asia/Taipei）。生成日期：2026/07/28。</p>
+    </main>
+  </div>
+</body>
+</html>
