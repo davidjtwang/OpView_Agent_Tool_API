@@ -9,4 +9,4 @@ OpView Agent Tool API MCP 測試 by Codex
 * [台灣主要冷氣品牌社群聲量報告]()
 
 OpView 站台測試 by Codex
-* [Ploom 近一年聲量觀察]()
+* [Ploom 近一年聲量觀察](ploom-yearly-opview-report.html)
