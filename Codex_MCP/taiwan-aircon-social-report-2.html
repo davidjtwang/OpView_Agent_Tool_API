@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>台灣主要冷氣品牌｜近 30 日社群聲量報告</title>
+  <meta name="description" content="2026/07/16–2026/08/14 台灣主要冷氣品牌社群聲量、來源、情緒與熱門詞互動分析。">
+  <style>
+    :root{--ink:#17243b;--muted:#65748b;--paper:#f5f7fb;--panel:#fff;--line:#dfe6ef;--nav:#101d33;--brand:#2764d8;--brand-soft:#e8f0ff;--positive:#1f9d72;--neutral:#8b97a8;--negative:#e04f5f;--shadow:0 12px 34px rgba(23,36,59,.08);--radius:18px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6}
+    button,select{font:inherit}
+    a{color:inherit}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(16,29,51,.96);backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+    .topbar-inner{max-width:1240px;margin:auto;display:flex;align-items:center;gap:18px;padding:12px 22px}
+    .brandmark{font-weight:800;white-space:nowrap;letter-spacing:.02em}
+    .brandmark small{display:block;color:#a9bddf;font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+    nav::-webkit-scrollbar{display:none}
+    nav a{padding:8px 11px;border-radius:9px;text-decoration:none;white-space:nowrap;color:#cad5e8;font-size:13px;font-weight:700}
+    nav a:hover,nav a.active{background:#fff;color:var(--nav)}
+    main{max-width:1240px;margin:auto;padding:28px 22px 72px}
+    section{margin:0 0 30px;scroll-margin-top:90px}
+    .hero{background:linear-gradient(135deg,#132441 0%,#214a8d 62%,#297bc7 100%);border-radius:26px;padding:42px;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;width:330px;height:330px;border-radius:50%;right:-90px;top:-150px;background:rgba(255,255,255,.1)}
+    .eyebrow{font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#9fc4ff;margin:0 0 9px}
+    h1{font-size:clamp(28px,4vw,48px);line-height:1.17;margin:0 0 14px;max-width:820px}
+    .hero p{margin:0;color:#d5e4fb;max-width:760px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px;position:relative;z-index:1}
+    .meta span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:7px 10px;border-radius:9px;font-size:12px;font-weight:700}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:0 0 14px}
+    .section-head h2{font-size:24px;line-height:1.25;margin:0}
+    .section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
+    .grid{display:grid;gap:15px}
+    .kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:18px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .kpi{padding:19px}
+    .kpi .label{color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.04em}
+    .kpi .value{font-size:30px;font-weight:850;line-height:1.15;margin:7px 0 5px}
+    .kpi .note{font-size:12px;color:var(--muted)}
+    .chart-card{padding:20px}
+    .chart-title{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:10px}
+    .chart-title h3{font-size:17px;margin:0}
+    .chart-title p{font-size:12px;color:var(--muted);margin:3px 0 0}
+    .chart{height:420px;width:100%}
+    .chart.mid{height:350px}
+    .chart.short{height:310px}
+    .native-chart{height:100%;display:flex;flex-direction:column;min-height:0}
+    .chart-legend{display:flex;gap:5px 12px;flex-wrap:wrap;align-items:center;margin:0 0 6px;font-size:12px}
+    .legend-button{border:0;background:transparent;color:var(--ink);padding:3px 2px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-weight:700}
+    .legend-button.off{opacity:.35;text-decoration:line-through}
+    .legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+    .svg-wrap{flex:1;min-height:0;position:relative}
+    .svg-wrap svg{width:100%;height:100%;display:block;overflow:visible}
+    .chart-grid{stroke:#e9eef5;stroke-width:1}.chart-axis{stroke:#c7d1df;stroke-width:1}.chart-label{fill:#65748b;font-size:11px}.chart-title-label{fill:#46556b;font-size:11px;font-weight:700}
+    .navigator{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:center;gap:7px 9px;margin-top:3px;color:var(--muted);font-size:11px;font-weight:700}
+    .navigator input{width:100%;accent-color:var(--brand)}
+    .donut-layout{height:100%;display:grid;grid-template-columns:minmax(180px,1fr) minmax(170px,.8fr);align-items:center;gap:8px}
+    .donut-layout svg{width:100%;height:100%;max-height:285px}.donut-legend{display:grid;gap:6px;font-size:12px}.donut-item{display:grid;grid-template-columns:10px 1fr auto;gap:7px;align-items:center;padding:3px 0}.donut-item b{font-variant-numeric:tabular-nums}
+    .bar-chart{height:100%;display:flex;flex-direction:column;justify-content:center;gap:9px;padding:6px 4px}.bar-row{display:grid;grid-template-columns:110px 1fr 54px;gap:9px;align-items:center;font-size:11px}.bar-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}.bar-track{height:17px;background:#eef2f7;border-radius:3px;overflow:hidden}.bar-fill{height:100%;border-radius:3px;cursor:help}.bar-value{text-align:right;color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums}
+    .sentiment-native{height:100%;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:12px 8px}.sent-legend{display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--muted)}.sent-row{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:center}.sent-brand{text-align:right;font-size:12px;font-weight:800}.sent-track{height:30px;display:flex;border-radius:5px;overflow:hidden;background:#eef2f7}.sent-seg{height:100%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:800;cursor:help;min-width:0}.sent-seg span{pointer-events:none}
+    .two-col{grid-template-columns:1.12fr .88fr}
+    .select-wrap{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;font-weight:700;white-space:nowrap}
+    select{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:7px 30px 7px 10px}
+    .insight-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    .insight{border-left:4px solid var(--brand);padding:14px 16px;background:#fff;border-radius:0 12px 12px 0;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .insight strong{display:block;font-size:14px;margin-bottom:3px}
+    .insight span{color:var(--muted);font-size:12px}
+    .word-controls{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
+    .brand-button{border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);padding:7px 12px;cursor:pointer;font-weight:750;font-size:13px}
+    .brand-button:hover,.brand-button[aria-pressed="true"]{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
+    .wordcloud{min-height:340px;display:flex;flex-wrap:wrap;align-content:center;align-items:center;justify-content:center;gap:10px 15px;padding:26px;background:radial-gradient(circle at center,#fff 0%,#f6f9fd 100%);border:1px dashed #c9d4e3;border-radius:16px;overflow:hidden}
+    .word{border:0;background:transparent;color:var(--brand);font-weight:800;cursor:help;padding:2px 3px;transition:transform .15s,opacity .15s}
+    .word:nth-child(3n){color:#6f42c1}.word:nth-child(4n){color:#167b6c}.word:nth-child(5n){color:#c35c21}
+    .word:hover,.word:focus{transform:scale(1.12)!important;outline:2px solid #97b9f2;outline-offset:3px;border-radius:4px}
+    .word-note{font-size:12px;color:var(--muted);margin:10px 0 0}
+    .findings{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .finding{padding:22px}
+    .finding .number{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--brand-soft);color:var(--brand);font-weight:850;margin-bottom:10px}
+    .finding h3{margin:0 0 7px;font-size:17px}
+    .finding p{margin:0;color:var(--muted);font-size:14px}
+    .recommendations{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .recommendation{padding:22px;position:relative;overflow:hidden}
+    .recommendation:before{content:"";display:block;width:42px;height:4px;border-radius:4px;background:var(--brand);margin-bottom:14px}
+    .recommendation h3{font-size:16px;margin:0 0 8px}
+    .recommendation p{font-size:13px;color:var(--muted);margin:0}
+    .priority{display:inline-block;margin-top:13px;font-size:11px;font-weight:850;letter-spacing:.04em;color:var(--brand);background:var(--brand-soft);padding:5px 8px;border-radius:6px}
+    .method{padding:22px;color:var(--muted);font-size:13px}
+    .method h3{color:var(--ink);margin:0 0 8px;font-size:16px}
+    .method ul{margin:8px 0 0;padding-left:20px}
+    .method li+li{margin-top:5px}
+    .tooltip{position:fixed;z-index:40;display:none;pointer-events:none;background:#101d33;color:#fff;padding:8px 10px;border-radius:8px;font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,.22);max-width:230px}
+    footer{text-align:center;color:var(--muted);font-size:12px;padding-top:14px}
+    @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.two-col,.recommendations{grid-template-columns:1fr}.chart{height:390px}.topbar-inner{padding:10px 14px}.hero{padding:32px}.insight-strip{grid-template-columns:1fr}.findings{grid-template-columns:1fr}}
+    @media(max-width:560px){main{padding:18px 12px 54px}.brandmark{display:none}.topbar-inner{padding:8px}.hero{padding:25px 20px;border-radius:18px}.kpis{grid-template-columns:1fr 1fr;gap:9px}.kpi{padding:14px}.kpi .value{font-size:24px}.chart-card{padding:13px}.chart{height:390px}.chart.mid{height:350px}.section-head{align-items:flex-start;flex-direction:column}.chart-title{flex-direction:column}.wordcloud{padding:18px;min-height:300px}.recommendations{gap:10px}.donut-layout{grid-template-columns:1fr 145px}.bar-row{grid-template-columns:92px 1fr 48px}.navigator{grid-template-columns:auto 1fr}.sent-row{grid-template-columns:66px 1fr}.sent-seg span{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.word{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brandmark">冷氣品牌聲量觀測<small>OPView social listening</small></div>
+      <nav aria-label="報告單元導覽">
+        <a href="#overview">總覽</a><a href="#trend">聲量趨勢</a><a href="#source">聲量來源</a><a href="#sentiment">情緒</a><a href="#wordcloud">文字雲</a><a href="#findings">觀察</a><a href="#actions">建議</a><a href="#method">方法</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section id="overview" class="hero">
+      <p class="eyebrow">Taiwan air-conditioner social pulse</p>
+      <h1>台灣主要冷氣品牌<br>近 30 日社群討論分析</h1>
+      <p>比較六個常見品牌的公開社群聲量、來源結構、正負情緒與熱門議題，協助判讀品牌活動、消費者口碑與潛在風險。</p>
+      <div class="meta"><span>期間｜2026/07/16–08/14</span><span>範圍｜社群、論壇、BBS 與回覆</span><span>資料｜OPView agent tools</span><span>08/14 為未滿日資料</span></div>
+    </section>
+
+    <section aria-label="關鍵數字">
+      <div class="grid kpis">
+        <div class="card kpi"><div class="label">六品牌總聲量</div><div class="value">21,207</div><div class="note">主文與回覆合計；品牌間可能交叉提及</div></div>
+        <div class="card kpi"><div class="label">聲量領先品牌</div><div class="value">大金</div><div class="note">8,598 則，占六品牌合計 40.5%</div></div>
+        <div class="card kpi"><div class="label">最高正面占比</div><div class="value">50.5%</div><div class="note">大金；官方粉專活動影響明顯</div></div>
+        <div class="card kpi"><div class="label">最高負面占比</div><div class="value">14.4%</div><div class="note">聲寶；樣本量 459 則，宜持續追蹤</div></div>
+      </div>
+    </section>
+
+    <section id="trend">
+      <div class="section-head"><div><h2>聲量趨勢</h2><p>點選圖例顯示／隱藏品牌；拖曳下方 Navigator 可縮放日期，游標移動可比較同日數據。</p></div></div>
+      <div class="card chart-card"><div id="trendChart" class="chart" role="img" aria-label="六品牌每日社群聲量折線圖"></div></div>
+      <div class="insight-strip">
+        <div class="insight"><strong>大金｜08/05 高峰 915</strong><span>08/05–08/08 連續放大，且粉專占來源 69.7%，活動型擴散特徵強。</span></div>
+        <div class="insight"><strong>Panasonic｜08/05 高峰 810</strong><span>高峰後逐日回落；「智能、聲控、台語」形成明顯功能議題群。</span></div>
+        <div class="insight"><strong>日立｜08/10–08/12 集中爆發</strong><span>三日合計 1,581 則，占其整月聲量 32.5%，需拆解活動與自然口碑。</span></div>
+      </div>
+    </section>
+
+    <section id="source">
+      <div class="section-head"><div><h2>聲量來源</h2><p>來源占比以各品牌 30 日主文＋回覆計算；切換品牌查看前八大站台。</p></div></div>
+      <div class="grid two-col">
+        <div class="card chart-card">
+          <div class="chart-title"><div><h3>品牌聲量占比</h3><p>六品牌比較基準</p></div></div>
+          <div id="shareChart" class="chart mid" role="img" aria-label="六品牌聲量占比圓環圖"></div>
+        </div>
+        <div class="card chart-card">
+          <div class="chart-title"><div><h3>品牌來源排行</h3><p>可用 hover 查看主文／回覆拆分</p></div><label class="select-wrap">品牌<select id="sourceBrand" aria-label="選擇來源分析品牌"></select></label></div>
+          <div id="sourceChart" class="chart mid" role="img" aria-label="所選品牌來源排行長條圖"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sentiment">
+      <div class="section-head"><div><h2>正負情緒</h2><p>情緒由 OPView 模型分類；長條為各品牌情緒占比，游標可查看筆數與百分比。</p></div></div>
+      <div class="card chart-card"><div id="sentimentChart" class="chart mid" role="img" aria-label="六品牌正面中立負面情緒百分比堆疊圖"></div></div>
+      <div class="insight-strip">
+        <div class="insight"><strong>大金、日立正面占比較高</strong><span>分別為 50.5% 與 47.7%，但兩者皆有高聲量活動期，不能直接等同自然好感。</span></div>
+        <div class="insight"><strong>Panasonic 以中立訊息為主</strong><span>中立占 76.4%；07/23 與 08/04 負面比例局部升高，適合回看服務／產品議題。</span></div>
+        <div class="insight"><strong>聲寶負面占比相對突出</strong><span>14.4% 為比較組最高，且 Mobile01、YouTube 合計 25%，需優先做論壇與影音留言照護。</span></div>
+      </div>
+    </section>
+
+    <section id="wordcloud">
+      <div class="section-head"><div><h2>熱門文字雲</h2><p>詞體大小依 OPView 熱門詞 score；已排除品牌名、「冷氣／空調」等查詢核心詞。</p></div></div>
+      <div class="card chart-card">
+        <div id="wordButtons" class="word-controls" aria-label="選擇文字雲品牌"></div>
+        <div id="wordCloud" class="wordcloud" role="group" aria-label="所選品牌熱門詞文字雲"></div>
+        <p class="word-note">提示：游標停留於詞彙可查看 score、提及次數（TF）與涵蓋文章數（DF）。活動名稱（如「終極密碼」、「大放送」）被保留，用來辨識官方活動對聲量的影響。</p>
+      </div>
+    </section>
+
+    <section id="findings">
+      <div class="section-head"><div><h2>觀察摘要</h2><p>從聲量規模、來源集中度、情緒與熱門詞交叉判讀。</p></div></div>
+      <div class="grid findings">
+        <article class="card finding"><span class="number">1</span><h3>聲量排行不等於自然口碑排行</h3><p>大金、Panasonic、日立合計占六品牌聲量 91.1%，但三者高峰均伴隨粉專或活動型內容。建議在內部 KPI 另拆「官方貼文回覆」與「消費者自發主文」，避免被活動聲量誤導。</p></article>
+        <article class="card finding"><span class="number">2</span><h3>功能溝通已形成品牌差異</h3><p>Panasonic 聚焦「智能、聲控、台語、窗型」；日立連結「變頻、空氣、壓縮機」；大金則有「省電、開窗」與活動詞。消費者仍以省電、機型、安裝、保固等購買決策語彙為主。</p></article>
+        <article class="card finding"><span class="number">3</span><h3>來源結構決定回應打法</h3><p>三菱電機的 Threads 占 66.5%，聲寶以 Facebook 公開社團占 44.4%；Panasonic、大金與禾聯則更受品牌粉專帶動。短文即時回應與社團／論壇長文解題需要不同素材與服務 SLA。</p></article>
+        <article class="card finding"><span class="number">4</span><h3>品牌詞需持續清理同名雜訊</h3><p>「三菱」簡稱容易混入汽車內容，本報告已收斂為三菱電機相關詞；聲寶仍可見租屋物件語彙。後續追蹤應維護排除詞與人工抽樣，確保月比／季比可比較。</p></article>
+      </div>
+    </section>
+
+    <section id="actions">
+      <div class="section-head"><div><h2>行銷建議</h2><p>依影響力與可執行性排序。</p></div></div>
+      <div class="grid recommendations">
+        <article class="card recommendation"><h3>建立「活動／自然口碑」雙軌儀表板</h3><p>以官方帳號與高互動活動文為標籤，每週分開追蹤聲量、正負情緒與新討論者。活動結束後再看 7 日自然聲量留存，衡量是否真正帶動品牌搜尋與考慮。</p><span class="priority">優先：立即</span></article>
+        <article class="card recommendation"><h3>把高頻功能詞轉成選購內容</h3><p>用「省電 × 坪數 × 機型」、「靜音 × 臥室」、「保固 × 安裝」製作短影音、懶人包與 FAQ；Panasonic 可延伸聲控與台語操作，大金／日立可強化節能與核心技術證據。</p><span class="priority">優先：高</span></article>
+        <article class="card recommendation"><h3>依平台設計社群照護 SLA</h3><p>Threads 以 2 小時內短答與導流為主；Facebook 社團、Mobile01、Ptt 提供可搜尋的完整排障與費用資訊。聲寶優先盤點負面留言；三菱電機加強 Threads 教育內容。</p><span class="priority">優先：高</span></article>
+        <article class="card recommendation"><h3>針對異常高峰啟動 24 小時拆解</h3><p>當單日聲量高於前 7 日均值 2 倍，自動拆解來源、主回文比例與情緒詞。Panasonic 07/23、08/04 的負面上升，以及聲寶 07/19、08/09 的負面高點，適合列為回溯樣本。</p><span class="priority">優先：中高</span></article>
+        <article class="card recommendation"><h3>用可信證據平衡促銷活動</h3><p>活動可快速放大正面聲量，但應同步投放能源效率、實測電費、噪音、售後時效與安裝案例，並邀請使用者回報實際使用情境，增加非獎勵式口碑。</p><span class="priority">優先：中</span></article>
+        <article class="card recommendation"><h3>每月校正品牌搜尋式</h3><p>建立汽車、租屋、其他家電與跨品牌比較的雜訊字典；保留「比較型討論」但排除非冷氣品類。以每品牌至少抽樣 50 篇驗證精準度後再做長期趨勢判讀。</p><span class="priority">優先：持續</span></article>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="card method">
+        <h3>資料口徑與限制</h3>
+        <ul>
+          <li>資料期間為 2026/07/16 00:00:00–2026/08/14 23:59:59（Asia/Taipei）；08/14 為查詢當日未滿日資料，不宜直接與完整日比較。</li>
+          <li>來源包含 Facebook、Instagram、YouTube、Threads、論壇、Ptt、Dcard、App 評論等帳戶授權可用公開資料與回覆；不含新聞、部落格與問答站。</li>
+          <li>品牌搜尋式均綁定冷氣／空調詞；三菱電機採嚴格品牌詞以排除汽車雜訊，因此數字不可與使用「三菱」寬鬆詞的報告直接相比。</li>
+          <li>情緒為自動模型分類，活動貼文、抽獎回覆與反諷可能影響結果；品牌間交叉提及會造成重複計入。本報告適合趨勢與相對比較，不代表市場占有率。</li>
+        </ul>
+      </div>
+    </section>
+    <footer>產製日期：2026/08/14 ｜ 資料來源：OPView agent tools ｜ 互動圖表：原生 SVG／HTML</footer>
+  </main>
+  <div id="wordTooltip" class="tooltip" role="tooltip"></div>
+
+  <script>
+  (() => {
+    const dates=['07/16','07/17','07/18','07/19','07/20','07/21','07/22','07/23','07/24','07/25','07/26','07/27','07/28','07/29','07/30','07/31','08/01','08/02','08/03','08/04','08/05','08/06','08/07','08/08','08/09','08/10','08/11','08/12','08/13','08/14'];
+    const palette={'大金':'#2764d8','Panasonic':'#00a0a6','日立':'#ec6b38','禾聯':'#7f55c7','三菱電機':'#d84b76','聲寶':'#65748b'};
+    const data={
+      '大金':{total:8598,trend:[403,225,116,91,110,225,512,165,571,301,228,344,230,92,191,80,44,73,110,208,915,773,412,518,293,248,285,488,326,21],sent:[4342,3489,767],sources:[['Facebook粉絲團',5994,53,5941],['Threads',1179,127,1052],['Facebook公開社團',749,320,429],['YouTube',229,8,221],['Mobile01',205,12,193],['Dcard',109,8,101],['Ptt',57,7,50],['Facebook不公開社團',39,39,0]],words:[['終極密碼',6247,4560,2282],['空氣',4228,2172,2131],['金彩',2710,2301,2288],['交換器',1832,1209,1201],['省電',1341,838,782],['開窗',1296,1238,1226],['變頻',188,246,136],['保固',186,213,147],['壓縮機',186,157,135],['分離式',181,276,99],['天氣',169,168,160],['基板',132,127,104],['耗電',117,123,112],['溫度',116,114,78],['師傅',111,126,80]]},
+      'Panasonic':{total:5861,trend:[147,129,146,81,271,147,127,357,316,299,193,130,90,96,79,179,77,90,64,115,810,498,269,223,242,186,122,132,228,18],sent:[723,4479,659],sources:[['Facebook粉絲團',2882,83,2799],['Facebook公開社團',1468,639,829],['Threads',1125,214,911],['Mobile01',182,9,173],['Facebook不公開社團',64,64,0],['Ptt',60,26,34],['Dcard',25,10,15],['YouTube',18,2,16]],words:[['智能',4510,2433,1230],['聲控',4504,3291,1226],['窗型',1585,1265,902],['台語',1335,1249,1213],['師傅',759,576,484],['分離式',533,644,374],['空調機',503,454,408],['家電',487,764,376],['電費',388,416,199],['機種',350,971,203],['客服',288,230,192],['房間',252,269,201],['室外機',235,242,211],['省電',221,237,175],['保固',220,272,191]]},
+      '日立':{total:4870,trend:[278,186,114,80,157,124,142,91,183,189,165,77,85,87,214,111,94,134,153,81,95,70,98,72,93,581,648,352,111,5],sent:[2322,2093,455],sources:[['Facebook粉絲團',2050,89,1961],['Threads',1381,180,1201],['Facebook公開社團',744,440,304],['Mobile01',348,22,326],['Ptt',114,19,95],['YouTube',109,13,96],['Facebook不公開社團',49,49,0],['Instagram',31,15,16]],words:[['變頻',486,652,329],['空氣',457,411,363],['天氣',330,327,320],['壓縮機',320,328,230],['分離式',308,472,189],['家電',295,625,171],['房間',273,267,200],['師傅',248,250,178],['溫度',208,235,159],['保固',202,274,169],['省電',196,223,164],['電費',188,207,152],['樓層',186,172,141],['冷暖',166,202,123],['室外機',154,177,131]]},
+      '禾聯':{total:914,trend:[51,22,16,24,23,44,125,53,58,48,35,38,23,19,36,51,22,14,14,11,15,18,29,22,8,54,25,10,6,0],sent:[359,473,82],sources:[['Facebook粉絲團',428,31,397],['Facebook公開社團',210,141,69],['Threads',153,32,121],['Ptt',40,4,36],['Mobile01',36,6,30],['Dcard',17,6,11],['Facebook不公開社團',13,13,0],['YouTube',9,0,9]],words:[['大放送',625,626,313],['生活轉動',615,600,313],['家電',147,344,103],['變頻',132,214,81],['分離式',108,159,64],['窗型',94,83,56],['冰箱',84,111,58],['洗衣機',81,125,57],['電風扇',76,66,53],['冷暖',72,93,54],['房間',60,64,43],['師傅',59,86,40],['廣告文',57,46,26],['私訊',55,67,53],['保固',52,66,48]]},
+      '三菱電機':{total:505,trend:[16,17,14,25,11,10,12,20,20,44,16,7,10,12,15,8,13,32,22,26,21,12,30,7,49,14,4,11,7,0],sent:[96,353,56],sources:[['Threads',336,48,288],['Facebook公開社團',50,33,17],['Ptt',36,10,26],['Facebook粉絲團',31,17,14],['Mobile01',28,0,28],['Dcard',6,5,1],['YouTube',5,4,1],['Facebook不公開社團',4,4,0]],words:[['靜音',60,62,38],['冷氣維修',53,41,26],['家電',70,181,42],['分離式',42,47,23],['壓縮機',34,44,31],['保固',33,43,29],['冷氣安裝',28,35,15],['師傅',28,27,20],['窗型',28,32,19],['品牌',247,293,174],['洗衣機',51,77,31],['冰箱',48,66,34],['大師',56,54,37],['冷暖',26,39,19],['省電',24,31,20]]},
+      '聲寶':{total:459,trend:[33,16,15,44,27,33,12,17,24,18,8,8,10,8,5,2,3,7,12,20,21,21,7,3,33,24,19,4,3,2],sent:[82,311,66],sources:[['Facebook公開社團',204,116,88],['Mobile01',69,3,66],['Facebook粉絲團',54,30,24],['Threads',51,23,28],['YouTube',46,1,45],['Facebook不公開社團',14,14,0],['Instagram',13,7,6],['Ptt',4,1,3]],words:[['分離式',141,177,79],['冰箱',107,140,88],['洗衣機',96,174,72],['家電',92,221,58],['一廳稀有釋出',62,42,21],['一房一廳',57,42,21],['變頻',49,108,36],['師傅',48,49,35],['保固',47,93,37],['窗型',45,51,27],['房間',43,60,34],['好鄰居',42,72,18],['電視',46,55,43],['屋主',53,49,23],['省電',38,49,31]]}
+    };
+    const brands=Object.keys(data);
+    const fmt=n=>Number(n).toLocaleString('zh-TW');
+    const wordTip=document.getElementById('wordTooltip');
+    function showTip(html,e){wordTip.style.display='block';wordTip.innerHTML=html;moveTip(e)}
+    function moveTip(e){wordTip.style.left=Math.max(8,Math.min(innerWidth-240,e.clientX+14))+'px';wordTip.style.top=Math.max(8,e.clientY-58)+'px'}
+    function hideTip(){wordTip.style.display='none'}
+    const trendEl=document.getElementById('trendChart'),shareEl=document.getElementById('shareChart'),sourceEl=document.getElementById('sourceChart'),sentimentEl=document.getElementById('sentimentChart');
+    const visibleBrands=new Set(brands);let rangeStart=0,rangeEnd=dates.length-1;
+    const xScale=(i,start,end,left,right)=>left+(i-start)*((right-left)/Math.max(1,end-start));
+    function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(Math.max(1,v))));return Math.ceil(v/p)*p}
+    function renderTrend(){
+      trendEl.innerHTML='<div class="native-chart"><div class="chart-legend"></div><div class="svg-wrap"></div><div class="navigator"><span class="nav-start"></span><input class="range-start" type="range" min="0" max="29" aria-label="趨勢起始日期"><span class="nav-end"></span><input class="range-end" type="range" min="0" max="29" aria-label="趨勢結束日期"></div></div>';
+      const legend=trendEl.querySelector('.chart-legend');brands.forEach(b=>{const bt=document.createElement('button');bt.type='button';bt.className='legend-button'+(visibleBrands.has(b)?'':' off');bt.innerHTML=`<span class="legend-dot" style="background:${palette[b]}"></span>${b}`;bt.addEventListener('click',()=>{if(visibleBrands.has(b)&&visibleBrands.size>1)visibleBrands.delete(b);else visibleBrands.add(b);renderTrend()});legend.appendChild(bt)});
+      const wrap=trendEl.querySelector('.svg-wrap'),w=Math.max(320,wrap.clientWidth),h=Math.max(245,wrap.clientHeight),L=52,R=w-16,T=15,B=h-34,shown=brands.filter(b=>visibleBrands.has(b));
+      const max=niceMax(Math.max(...shown.flatMap(b=>data[b].trend.slice(rangeStart,rangeEnd+1))));let svg=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="六品牌每日聲量趨勢">`;
+      for(let i=0;i<=4;i++){const y=T+(B-T)*i/4,val=Math.round(max*(1-i/4));svg+=`<line class="chart-grid" x1="${L}" x2="${R}" y1="${y}" y2="${y}"/><text class="chart-label" x="${L-8}" y="${y+4}" text-anchor="end">${fmt(val)}</text>`}
+      const tickCount=w<600?4:7;for(let k=0;k<tickCount;k++){const idx=Math.round(rangeStart+(rangeEnd-rangeStart)*k/(tickCount-1)),x=xScale(idx,rangeStart,rangeEnd,L,R);svg+=`<text class="chart-label" x="${x}" y="${B+21}" text-anchor="middle">${dates[idx]}</text>`}
+      svg+=`<line class="chart-axis" x1="${L}" x2="${L}" y1="${T}" y2="${B}"/><line class="chart-axis" x1="${L}" x2="${R}" y1="${B}" y2="${B}"/><text class="chart-title-label" x="12" y="12">聲量（則）</text>`;
+      shown.forEach(b=>{let d='';for(let i=rangeStart;i<=rangeEnd;i++){const x=xScale(i,rangeStart,rangeEnd,L,R),y=B-data[b].trend[i]/max*(B-T);d+=(i===rangeStart?'M':'L')+x.toFixed(1)+','+y.toFixed(1)}svg+=`<path d="${d}" fill="none" stroke="${palette[b]}" stroke-width="2.5" stroke-linejoin="round"/>`});
+      svg+=`<g class="hover-group" style="display:none"></g><rect class="hover-hit" x="${L}" y="${T}" width="${R-L}" height="${B-T}" fill="transparent" style="cursor:crosshair"/></svg>`;wrap.innerHTML=svg;
+      const group=wrap.querySelector('.hover-group'),hit=wrap.querySelector('.hover-hit');hit.addEventListener('pointermove',e=>{const r=hit.getBoundingClientRect(),ratio=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),idx=Math.round(rangeStart+ratio*(rangeEnd-rangeStart)),x=xScale(idx,rangeStart,rangeEnd,L,R);group.style.display='block';group.innerHTML=`<line x1="${x}" x2="${x}" y1="${T}" y2="${B}" stroke="#65748b" stroke-width="1"/>`+shown.map(b=>{const y=B-data[b].trend[idx]/max*(B-T);return `<circle cx="${x}" cy="${y}" r="4" fill="#fff" stroke="${palette[b]}" stroke-width="2"/>`}).join('');showTip(`<b>2026/${dates[idx]}</b><br>`+shown.map(b=>`<span style="color:${palette[b]}">●</span> ${b}：<b>${fmt(data[b].trend[idx])}</b> 則`).join('<br>'),e)});hit.addEventListener('pointerleave',()=>{group.style.display='none';hideTip()});
+      const rs=trendEl.querySelector('.range-start'),re=trendEl.querySelector('.range-end'),ls=trendEl.querySelector('.nav-start'),le=trendEl.querySelector('.nav-end');rs.value=rangeStart;re.value=rangeEnd;ls.textContent='起 '+dates[rangeStart];le.textContent='迄 '+dates[rangeEnd];rs.addEventListener('input',e=>{rangeStart=Math.min(+e.target.value,rangeEnd-2);renderTrend()});re.addEventListener('input',e=>{rangeEnd=Math.max(+e.target.value,rangeStart+2);renderTrend()});
+    }
+    function arcPath(cx,cy,ro,ri,a0,a1){const p=(r,a)=>[cx+r*Math.cos(a-Math.PI/2),cy+r*Math.sin(a-Math.PI/2)],o0=p(ro,a0),o1=p(ro,a1),i1=p(ri,a1),i0=p(ri,a0),large=a1-a0>Math.PI?1:0;return `M${o0[0]},${o0[1]} A${ro},${ro} 0 ${large} 1 ${o1[0]},${o1[1]} L${i1[0]},${i1[1]} A${ri},${ri} 0 ${large} 0 ${i0[0]},${i0[1]} Z`}
+    function renderShare(){const total=brands.reduce((s,b)=>s+data[b].total,0);shareEl.innerHTML='<div class="donut-layout"><svg viewBox="0 0 300 280" role="img" aria-label="六品牌聲量占比圓環圖"></svg><div class="donut-legend"></div></div>';const svg=shareEl.querySelector('svg'),legend=shareEl.querySelector('.donut-legend');let a=0,paths='';brands.forEach(b=>{const next=a+Math.PI*2*data[b].total/total;paths+=`<path data-brand="${b}" d="${arcPath(150,135,105,60,a,next)}" fill="${palette[b]}" stroke="#fff" stroke-width="3"/>`;a=next;const row=document.createElement('div');row.className='donut-item';row.dataset.brand=b;row.innerHTML=`<span class="legend-dot" style="background:${palette[b]}"></span><span>${b}</span><b>${(100*data[b].total/total).toFixed(1)}%</b>`;legend.appendChild(row)});svg.innerHTML=paths+`<text x="150" y="126" text-anchor="middle" class="chart-label">六品牌合計</text><text x="150" y="153" text-anchor="middle" style="fill:#17243b;font-size:22px;font-weight:800">${fmt(total)}</text>`;[...shareEl.querySelectorAll('[data-brand]')].forEach(el=>{el.addEventListener('pointerenter',e=>{const b=el.dataset.brand;showTip(`<b>${b}</b><br>${fmt(data[b].total)} 則｜${(100*data[b].total/total).toFixed(1)}%`,e)});el.addEventListener('pointermove',moveTip);el.addEventListener('pointerleave',hideTip)})}
+    const sourceSelect=document.getElementById('sourceBrand');
+    brands.forEach(b=>sourceSelect.add(new Option(b,b)));
+    function drawSource(b){const rows=data[b].sources,max=Math.max(...rows.map(r=>r[1]));sourceEl.innerHTML='<div class="bar-chart">'+rows.map((r,i)=>`<div class="bar-row"><div class="bar-label" title="${r[0]}">${r[0]}</div><div class="bar-track"><div class="bar-fill" data-i="${i}" style="width:${100*r[1]/max}%;background:${palette[b]}"></div></div><div class="bar-value">${fmt(r[1])}</div></div>`).join('')+'</div>';sourceEl.querySelectorAll('.bar-fill').forEach(el=>{el.addEventListener('pointerenter',e=>{const r=rows[+el.dataset.i];showTip(`<b>${r[0]}</b><br>${fmt(r[1])} 則｜${(100*r[1]/data[b].total).toFixed(1)}%<br>主文 ${fmt(r[2])}｜回覆 ${fmt(r[3])}`,e)});el.addEventListener('pointermove',moveTip);el.addEventListener('pointerleave',hideTip)})}
+    sourceSelect.value='大金';drawSource('大金');sourceSelect.addEventListener('change',e=>drawSource(e.target.value));
+    const sentNames=['正面','中立','負面'],sentColors=['#1f9d72','#8b97a8','#e04f5f'];
+    function renderSentiment(){sentimentEl.innerHTML='<div class="sentiment-native"><div class="sent-legend">'+sentNames.map((n,i)=>`<span><i class="legend-dot" style="background:${sentColors[i]}"></i> ${n}</span>`).join('')+'</div>'+brands.map(b=>`<div class="sent-row"><div class="sent-brand">${b}</div><div class="sent-track">${sentNames.map((n,i)=>{const p=100*data[b].sent[i]/data[b].total;return `<div class="sent-seg" data-brand="${b}" data-i="${i}" style="width:${p}%;background:${sentColors[i]}"><span>${p>=7?p.toFixed(1)+'%':''}</span></div>`}).join('')}</div></div>`).join('')+'</div>';sentimentEl.querySelectorAll('.sent-seg').forEach(el=>{el.addEventListener('pointerenter',e=>{const b=el.dataset.brand,i=+el.dataset.i,p=100*data[b].sent[i]/data[b].total;showTip(`<b>${b}｜${sentNames[i]}</b><br>${fmt(data[b].sent[i])} 則｜${p.toFixed(1)}%`,e)});el.addEventListener('pointermove',moveTip);el.addEventListener('pointerleave',hideTip)})}
+    renderTrend();renderShare();renderSentiment();
+    const wordButtons=document.getElementById('wordButtons'),cloud=document.getElementById('wordCloud');
+    function drawWords(b){[...wordButtons.children].forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.brand===b)));const words=data[b].words,max=Math.max(...words.map(w=>w[1])),min=Math.min(...words.map(w=>w[1]));cloud.replaceChildren();words.forEach((w,i)=>{const el=document.createElement('button');el.type='button';el.className='word';const t=(Math.sqrt(w[1])-Math.sqrt(min))/(Math.sqrt(max)-Math.sqrt(min)||1);el.style.fontSize=(15+t*29)+'px';el.style.transform=`translateY(${[-4,3,0,5,-2][i%5]}px) rotate(${[-2,1,0,2,-1][i%5]}deg)`;el.textContent=w[0];el.setAttribute('aria-label',`${w[0]}，熱門分數 ${w[1]}，提及 ${w[2]} 次，涵蓋 ${w[3]} 篇`);el.addEventListener('pointerenter',e=>showWordTip(e,w));el.addEventListener('pointermove',e=>moveWordTip(e));el.addEventListener('pointerleave',hideWordTip);el.addEventListener('focus',e=>{const r=e.target.getBoundingClientRect();wordTip.style.display='block';wordTip.innerHTML=`<b>${w[0]}</b><br>score ${fmt(w[1])}｜TF ${fmt(w[2])}｜DF ${fmt(w[3])}`;wordTip.style.left=(r.left+r.width/2)+'px';wordTip.style.top=(r.top-58)+'px'});el.addEventListener('blur',hideWordTip);cloud.appendChild(el);});}
+    function showWordTip(e,w){wordTip.style.display='block';wordTip.innerHTML=`<b>${w[0]}</b><br>score ${fmt(w[1])}｜TF ${fmt(w[2])}｜DF ${fmt(w[3])}`;moveWordTip(e)}function moveWordTip(e){wordTip.style.left=Math.min(innerWidth-240,e.clientX+14)+'px';wordTip.style.top=(e.clientY-54)+'px'}function hideWordTip(){wordTip.style.display='none'}
+    brands.forEach(b=>{const bt=document.createElement('button');bt.type='button';bt.className='brand-button';bt.dataset.brand=b;bt.textContent=b;bt.setAttribute('aria-pressed','false');bt.addEventListener('click',()=>drawWords(b));wordButtons.appendChild(bt)});drawWords('大金');
+    let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{renderTrend();renderShare();drawSource(sourceSelect.value);renderSentiment()},140)});
+    const sections=[...document.querySelectorAll('main section[id]')],links=[...document.querySelectorAll('nav a')];const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!visible)return;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+visible.target.id))},{rootMargin:'-20% 0px -65% 0px',threshold:[0,.2,.5]});sections.forEach(s=>observer.observe(s));
+  })();
+  </script>
+</body>
+</html>
