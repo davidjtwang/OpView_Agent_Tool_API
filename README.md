@@ -13,3 +13,5 @@ OpView Agent Tool API MCP 測試 by Codex
 
 OpView 站台測試 by Codex（Codex 開啟瀏覽器進入站台操作）
 * [Ploom 近一年聲量觀察](https://davidjtwang.github.io/OpView_Agent_Tool_API/Codex_OpView/ploom-yearly-opview-report.html) (2026/07/28 分段 1m 56s 最小的唯讀查詢測試，確認資料可讀取後再回報可用範圍; 1m 8s 查詢交辦需求; 4m 9s Ploom 近一年聲量分析)
+* [台灣加熱菸品牌近一年聲量觀察 V1](https://davidjtwang.github.io/OpView_Agent_Tool_API/Codex_OpView/opview-heated-tobacco-report-v1.html) (2026/09/04 8m 3s)
+* [台灣加熱菸品牌近一年聲量觀察 V2](https://davidjtwang.github.io/OpView_Agent_Tool_API/Codex_OpView/opview-heated-tobacco-report-v2.html) (2026/09/04 前一版增加互動效果 + 5m 34s)
